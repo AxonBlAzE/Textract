@@ -5,8 +5,22 @@ class Choice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      backgroundColor: Colors.red[700],
+      appBar: AppBar(
+        // backgroundColor: Colors.red[700],
+      ),
+      body: Column(children: [
+        const Text('Take A Picture From'),
+        IconButton(
+          icon: const Icon(Icons.camera),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: const Icon(Icons.image),
+          onPressed: () {},
+        ),
+      ],)
     );
   }
 }
