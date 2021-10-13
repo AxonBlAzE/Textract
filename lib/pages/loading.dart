@@ -15,8 +15,9 @@ class _LoadingState extends State<Loading> {
   }
 
   void gotoHome() async {
-    await Future(() => const Duration(seconds: 4));
-    Navigator.pushNamed(context, '/choice');
+    await Future.delayed(const Duration(seconds: 4), (){
+      Navigator.pushNamed(context, '/choice');
+      });
   }
 
   @override
