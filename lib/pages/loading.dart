@@ -9,6 +9,7 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  @override
   void initState(){
     super.initState();
     gotoHome();
@@ -16,7 +17,7 @@ class _LoadingState extends State<Loading> {
 
   void gotoHome() async {
     await Future.delayed(const Duration(seconds: 4), (){
-      Navigator.pushNamed(context, '/home');
+      Navigator.popAndPushNamed(context, '/home');
       });
   }
 

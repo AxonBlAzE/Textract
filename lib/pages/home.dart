@@ -28,253 +28,346 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: 100,
-              width: 100,
-              child: const CircleAvatar(
-                backgroundImage: AssetImage('./assets/logo.png'),
-              ),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Center(
-              child: Container(
-                width: 350,
-                decoration: BoxDecoration(
-                  color: const Color.fromRGBO(209, 54, 51, 1),
-                  borderRadius: BorderRadius.circular(31),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 2,
-                      offset: Offset(2.0, 2.0),
-                    ),
-                  ],
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage('./assets/logo.png'),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(
-                    children: [
-                      const Text(
-                        "Welcome to Textract.\n",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        data['Summary'].toString(),
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  ),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 80,
-                  width: 80,
+              const SizedBox(
+                height: 15,
+              ),
+              Center(
+                child: Container(
+                  width: 350,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2),
-                    shape: BoxShape.circle,
                     color: const Color.fromRGBO(209, 54, 51, 1),
+                    borderRadius: BorderRadius.circular(31),
                     boxShadow: const [
                       BoxShadow(
-                        color: Colors.black38,
-                        blurRadius: 6,
-                        offset: Offset(2, 2),
-                        spreadRadius: 2,
+                        color: Colors.black,
+                        blurRadius: 2,
+                        offset: Offset(2.0, 2.0),
                       ),
                     ],
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Image.asset("./assets/camera.png"),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(209, 54, 51, 1),
-                        borderRadius: BorderRadius.circular(14),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black38,
-                            blurRadius: 4,
-                            offset: Offset(2.0, 2.0),
-                          ),
-                        ],
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "Step 1",
+                    child: Column(
+                      children: [
+                        const Text(
+                          "Welcome to Textract.\n",
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.white,
                           ),
                         ),
-                      ),
+                        Text(
+                          data['Summary'].toString(),
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                      child: Container(
-                        width: 250,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 80,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      shape: BoxShape.circle,
+                      color: const Color.fromRGBO(209, 54, 51, 1),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black38,
+                          blurRadius: 6,
+                          offset: Offset(2, 2),
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Image.asset("./assets/camera.png"),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
                         decoration: BoxDecoration(
                           color: Color.fromRGBO(209, 54, 51, 1),
                           borderRadius: BorderRadius.circular(14),
                           boxShadow: const [
                             BoxShadow(
                               color: Colors.black38,
+                              blurRadius: 4,
                               offset: Offset(2.0, 2.0),
                             ),
                           ],
                         ),
-                        child: Padding(
+                        child: const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            data['Step-1'].toString(),
-                            style: const TextStyle(
+                            "Step 1",
+                            style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
                             ),
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                        child: Container(
+                          width: 250,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(209, 54, 51, 1),
+                            borderRadius: BorderRadius.circular(14),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black38,
+                                offset: Offset(2.0, 2.0),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              data['Step-1'].toString(),
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 80,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      shape: BoxShape.circle,
+                      color: Color.fromRGBO(209, 54, 51, 1),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black38,
+                          blurRadius: 6,
+                          offset: Offset(2, 2),
+                          spreadRadius: 2,
+                        ),
+                      ],
                     ),
-                  ],
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 80,
-                  width: 80,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2),
-                    shape: BoxShape.circle,
-                    color: Color.fromRGBO(209, 54, 51, 1),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black38,
-                        blurRadius: 6,
-                        offset: Offset(2, 2),
-                        spreadRadius: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Image.asset("./assets/imgtext.png"),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(209, 54, 51, 1),
+                          borderRadius: BorderRadius.circular(14),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black38,
+                              blurRadius: 4,
+                              offset: Offset(2.0, 2.0),
+                            ),
+                          ],
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Step 2",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                        child: Container(
+                          width: 250,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(209, 54, 51, 1),
+                            borderRadius: BorderRadius.circular(14),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black38,
+                                offset: Offset(2.0, 2.0),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              // "",
+                              data['Step-2'].toString(),
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(6.0),
-                    child: Image.asset("./assets/imgtext.png"),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(209, 54, 51, 1),
-                        borderRadius: BorderRadius.circular(14),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black38,
-                            blurRadius: 4,
-                            offset: Offset(2.0, 2.0),
-                          ),
-                        ],
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "Step 2",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 80,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      shape: BoxShape.circle,
+                      color: Color.fromRGBO(209, 54, 51, 1),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black38,
+                          blurRadius: 6,
+                          offset: Offset(2, 2),
+                          spreadRadius: 2,
                         ),
-                      ),
+                      ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                      child: Container(
-                        width: 250,
+                    child: Padding(
+                      padding: const EdgeInsets.all(14.0),
+                      child: Image.asset(
+                        "./assets/change.png",
+                      height: 20,
+                      width: 20,
+                      fit: BoxFit.contain,),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
                         decoration: BoxDecoration(
                           color: Color.fromRGBO(209, 54, 51, 1),
                           borderRadius: BorderRadius.circular(14),
                           boxShadow: const [
                             BoxShadow(
                               color: Colors.black38,
+                              blurRadius: 4,
                               offset: Offset(2.0, 2.0),
                             ),
                           ],
                         ),
-                        child: Padding(
+                        child: const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            // "",
-                            data['Step-2'].toString(),
-                            style: const TextStyle(
+                            "Step 3",
+                            style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/choice');
-                  },
-                  child: Text("Get Started ->"),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                        child: Container(
+                          width: 250,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(209, 54, 51, 1),
+                            borderRadius: BorderRadius.circular(14),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black38,
+                                offset: Offset(2.0, 2.0),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              // "",
+                              data['Step-3'].toString(),
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(
-                  width: 15,
-                )
-              ],
-            )
-          ],
+                ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/choice');
+                    },
+                    child: Text("Get Started ->"),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
