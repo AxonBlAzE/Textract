@@ -3,7 +3,7 @@ import 'package:textract/pages/choice.dart';
 import 'package:textract/pages/home.dart';
 import 'package:textract/pages/preview.dart';
 import 'package:textract/pages/loading.dart';
-import 'package:textract/pages/show.dart';
+import 'package:textract/pages/converted.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -13,7 +13,7 @@ void main() => runApp(
           '/home': (context) => Home(),
           '/choice': (context) => Choice(),
           '/preview': (context) => Preview(),
-          '/text': (context) => Show_Text(),
+          '/converted': (context) => Converted(),
         },
       ),
     );

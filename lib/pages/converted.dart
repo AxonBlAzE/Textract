@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Preview extends StatelessWidget {
-  const Preview({ Key? key }) : super(key: key);
+class Converted extends StatefulWidget {
+  const Converted({ Key? key }) : super(key: key);
 
+  @override
+  _ConvertedState createState() => _ConvertedState();
+}
+
+class _ConvertedState extends State<Converted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(181, 2, 1, 1),
       appBar: AppBar(
         title: const Text(
-          'SELECTED PICTURE',
+          'CONVERTED TEXT',
            style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
@@ -36,14 +41,10 @@ class Preview extends StatelessWidget {
         ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton.extended(
-        // icon: Image.asset( "./assets/imgtext.png",
-        // fit: BoxFit.contain,
-        // height: 40,
-        // width: 40,),
-        icon: Icon(Icons.image),
+        icon: Icon(Icons.translate),
         backgroundColor: Color.fromRGBO(209, 54, 51, 1),
-        label: Text('Convert'),
-        onPressed: () {Navigator.popAndPushNamed(context, '/converted');}
+        label: Text('Translate'),
+        onPressed: () {},
       ),
       bottomNavigationBar: BottomAppBar(
       // shape: CircularNotchedRectangle(),
@@ -52,7 +53,7 @@ class Preview extends StatelessWidget {
         data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
+          children: [
             IconButton(
               tooltip: 'New Image',
               icon: const Icon(Icons.camera_alt,color: Colors.white),
@@ -63,15 +64,15 @@ class Preview extends StatelessWidget {
               icon: const Icon(Icons.save,color: Colors.white),
               onPressed: () {},
             ),
-            SizedBox(width: 50,),
+            SizedBox(width: 70,),
             IconButton(
               tooltip: 'Copy to Clipboard',
               icon: const Icon(Icons.copy,color: Colors.white),
               onPressed: () {},
             ),
             IconButton(
-              tooltip: 'Translate',
-              icon: const Icon(Icons.translate,color: Colors.white),
+              tooltip: 'Give Feedback',
+              icon: const Icon(Icons.rate_review,color: Colors.white),
               onPressed: () {},
             )
           ],
