@@ -66,15 +66,10 @@ class Choice extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(209, 54, 51, 1),
-                    padding: EdgeInsets.all(0),
-                    // shape: new RoundedRectangleBorder(
-                    //   borderRadius: new BorderRadius.circular(30.0),
-                    // ),
-                  ),
-                  onPressed: () {Navigator.popAndPushNamed(context, '/preview');},
+                GestureDetector(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, '/preview');
+                  },
                   child: Container(
                     width: 180,
                     decoration: BoxDecoration(
