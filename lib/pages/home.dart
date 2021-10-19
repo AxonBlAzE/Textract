@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+
+  // var data = new Map();
+  Map<String, String> data = {
+    "Summary": "Have you ever needed to extract text from a picture but couldn't and ended up having to type it in by hand?\n\nIf that's the case, Textract is the tool you've been looking for.\n\nTextract will make extracting text from any image a breeze with just one click.",
+    "Step-1": "Simply choose an image from the gallery or take a new one.",
+    "Step-2": "By pressing the convert button, you may now transform the image to text.",
+    "Step-3": "You can also use Translate button to switch from english to another language."
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +19,7 @@ class Home extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text(
+          title: const Text(
             "TEXTRACT",
             style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -27,23 +34,23 @@ class Home extends StatelessWidget {
             Container(
               height: 100,
               width: 100,
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 backgroundImage: AssetImage('./assets/logo.png'),
               ),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Center(
               child: Container(
                 width: 350,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(209, 54, 51, 1),
+                  color: const Color.fromRGBO(209, 54, 51, 1),
                   borderRadius: BorderRadius.circular(31),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black,
                       blurRadius: 2,
@@ -55,7 +62,7 @@ class Home extends StatelessWidget {
                   padding: const EdgeInsets.all(15.0),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Welcome to Textract.\n",
                         style: TextStyle(
                           fontSize: 16,
@@ -63,8 +70,8 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "Have you ever needed to extract text from a picture but couldn't and ended up having to type it in by hand?\n\nIf that's the case, Textract is the tool you've been looking for.\n\nTextract will make extracting text from any image a breeze with just one click.",
-                        style: TextStyle(
+                        data['Summary'].toString(),
+                        style: const TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                         ),
@@ -74,7 +81,7 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Row(
@@ -86,8 +93,8 @@ class Home extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black, width: 2),
                     shape: BoxShape.circle,
-                    color: Color.fromRGBO(209, 54, 51, 1),
-                    boxShadow: [
+                    color: const Color.fromRGBO(209, 54, 51, 1),
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black38,
                         blurRadius: 6,
@@ -101,7 +108,7 @@ class Home extends StatelessWidget {
                     child: Image.asset("./assets/camera.png"),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Column(
@@ -111,7 +118,7 @@ class Home extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(209, 54, 51, 1),
                         borderRadius: BorderRadius.circular(14),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Colors.black38,
                             blurRadius: 4,
@@ -119,8 +126,8 @@ class Home extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Text(
                           "Step 1",
                           style: TextStyle(
@@ -137,7 +144,7 @@ class Home extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Color.fromRGBO(209, 54, 51, 1),
                           borderRadius: BorderRadius.circular(14),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black38,
                               offset: Offset(2.0, 2.0),
@@ -145,10 +152,10 @@ class Home extends StatelessWidget {
                           ],
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Text(
-                            "Simply choose an image from the gallery or take a new one.",
-                            style: TextStyle(
+                            data['Step-1'].toString(),
+                            style: const TextStyle(
                               fontSize: 16,
                               color: Colors.white,
                             ),
@@ -160,7 +167,7 @@ class Home extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -173,7 +180,7 @@ class Home extends StatelessWidget {
                     border: Border.all(color: Colors.black, width: 2),
                     shape: BoxShape.circle,
                     color: Color.fromRGBO(209, 54, 51, 1),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black38,
                         blurRadius: 6,
@@ -187,7 +194,7 @@ class Home extends StatelessWidget {
                     child: Image.asset("./assets/imgtext.png"),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Column(
@@ -197,7 +204,7 @@ class Home extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(209, 54, 51, 1),
                         borderRadius: BorderRadius.circular(14),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Colors.black38,
                             blurRadius: 4,
@@ -205,8 +212,8 @@ class Home extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Text(
                           "Step 2",
                           style: TextStyle(
@@ -223,7 +230,7 @@ class Home extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Color.fromRGBO(209, 54, 51, 1),
                           borderRadius: BorderRadius.circular(14),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black38,
                               offset: Offset(2.0, 2.0),
@@ -231,11 +238,11 @@ class Home extends StatelessWidget {
                           ],
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Text(
                             // "",
-                            "By pressing the convert button, you may now transform the image to text.",
-                            style: TextStyle(
+                            data['Step-2'].toString(),
+                            style: const TextStyle(
                               fontSize: 16,
                               color: Colors.white,
                             ),
@@ -247,7 +254,7 @@ class Home extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -262,7 +269,7 @@ class Home extends StatelessWidget {
                     backgroundColor: MaterialStateProperty.all(Colors.black),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 )
               ],
