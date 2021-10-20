@@ -37,7 +37,7 @@ dependencies:
   flutter_spinkit: ^5.1.0
   flutter_firebase_ml_vision: ^0.0.1
   firebase_ml_vision: ^0.9.6+2
-  # image_picker: ^0.8.4+2 
+  image_picker: ^0.8.4+2 
 
 dev_dependencies:
   flutter_test:

@@ -26,43 +26,48 @@ class Choice extends StatelessWidget {
                     fontSize: 22,
                   ),
                 ),
-                Container(
-                  width: 180,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    border: Border.all(color: Colors.black, width: 2),
-                    color: Color.fromRGBO(209, 54, 51, 1),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black38,
-                        blurRadius: 6,
-                        offset: Offset(2, 2),
-                        spreadRadius: 2,
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.asset(
-                            "./assets/clic.png",
-                            fit: BoxFit.cover,
-                            width: 120,
-                          ),
-                        ),
-                        const Text(
-                          "From Camera",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, '/preview');
+                  },
+                  child: Container(
+                    width: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      border: Border.all(color: Colors.black, width: 2),
+                      color: Color.fromRGBO(209, 54, 51, 1),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black38,
+                          blurRadius: 6,
+                          offset: Offset(2, 2),
+                          spreadRadius: 2,
                         ),
                       ],
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(
+                              "./assets/clic.png",
+                              fit: BoxFit.cover,
+                              width: 120,
+                            ),
+                          ),
+                          const Text(
+                            "From Camera",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
