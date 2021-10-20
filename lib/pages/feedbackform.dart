@@ -41,9 +41,9 @@ class _FeedbackFormState extends State<FeedbackForm> {
                 onChange: (int value) {
                   print(value);
                 }),
-            SizedBox(height: 25),
+            SizedBox(height: 5),
             buildFeedback(),
-            
+            SizedBox(height: 15,),
             buildSubmit(),
           ],
         ),

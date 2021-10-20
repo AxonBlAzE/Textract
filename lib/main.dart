@@ -15,7 +15,7 @@ void main() => runApp(
           '/choice': (context) => Choice(),
           '/preview': (context) => Preview(),
           '/converted': (context) => Converted(),
-          '/feedbackfrom': (context) => FeedbackForm(),
+          '/feedbackform': (context) => FeedbackForm(),
         },
       ),
     );
