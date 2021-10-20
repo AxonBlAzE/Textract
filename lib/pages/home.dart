@@ -191,8 +191,8 @@ class Home extends StatelessWidget {
                       ],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: Image.asset("./assets/imgtext.png"),
+                      padding: const EdgeInsets.fromLTRB(8, 4, 4, 4),
+                      child: Image.asset("./assets/convert.png"),
                     ),
                   ),
                   const SizedBox(
