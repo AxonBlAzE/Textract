@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-
+import 'package:textract/services/ocr.dart';
 class Preview extends StatelessWidget {
-  const Preview({Key? key}) : super(key: key);
+
+  // late File image; 
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class Preview extends StatelessWidget {
                   color: Colors.white,
                   height: 580,
                   width: 380,
+                  // child: image != null ? Image.file(image,height: 580,width: 380,) : Text('No image selected'),
                 ),
               ),
             ),
@@ -58,7 +61,7 @@ class Preview extends StatelessWidget {
           data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
+            children: [
               IconButton(
                 tooltip: 'New Image',
                 icon: const Icon(Icons.camera_alt, color: Colors.white),
@@ -69,7 +72,7 @@ class Preview extends StatelessWidget {
                 icon: const Icon(Icons.save, color: Colors.white),
                 onPressed: () {},
               ),
-              SizedBox(
+              const SizedBox(
                 width: 50,
               ),
               IconButton(
