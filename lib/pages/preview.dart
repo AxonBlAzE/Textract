@@ -1,12 +1,27 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:textract/services/ocr.dart';
-class Preview extends StatelessWidget {
+class Preview extends StatefulWidget {
 
-  // late File image; 
+  @override
+  State<Preview> createState() => _PreviewState();
+}
+class _PreviewState extends State<Preview> { 
+
+  Map data = {};
 
   @override
   Widget build(BuildContext context) {
+
+    data = ModalRoute.of(context)?.settings.arguments as Map;
+    File image = data['image'];
+    // if (data.isNotEmpty) {
+    //   data = data;
+    // } else {
+    //   data = ModalRoute.of(context)?.settings.arguments as Map;
+    // }
+    print(data);
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(181, 2, 1, 1),
       appBar: AppBar(
@@ -35,7 +50,7 @@ class Preview extends StatelessWidget {
                   color: Colors.white,
                   height: 580,
                   width: 380,
-                  // child: image != null ? Image.file(image,height: 580,width: 380,) : Text('No image selected'),
+                  child:Image.file(image,height: 580,width: 380,),
                 ),
               ),
             ),
