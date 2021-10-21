@@ -40,6 +40,7 @@ dependencies:
   reviews_slider: ^2.0.0
   image_picker: ^0.8.4+2 
   fluttertoast: ^8.0.8
+  toast: ^0.1.5
 
 dev_dependencies:
   flutter_test:

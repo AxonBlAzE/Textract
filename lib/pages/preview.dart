@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Preview extends StatefulWidget {
 
@@ -7,6 +8,16 @@ class Preview extends StatefulWidget {
   State<Preview> createState() => _PreviewState();
 }
 class _PreviewState extends State<Preview> { 
+
+  void showError(){
+      Fluttertoast.showToast(
+        msg: 'You must convert to Text before performing this action.',
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.grey,
+        textColor: Colors.white,
+      );
+    }
 
   Map data = {};
 
@@ -80,12 +91,12 @@ class _PreviewState extends State<Preview> {
               IconButton(
                 tooltip: 'New Image',
                 icon: const Icon(Icons.camera_alt, color: Colors.white),
-                onPressed: () {},
+                onPressed: () {Navigator.popAndPushNamed(context, '/choice');},
               ),
               IconButton(
                 tooltip: 'Save as Text',
                 icon: const Icon(Icons.save, color: Colors.white),
-                onPressed: () {},
+                onPressed: showError,
               ),
               const SizedBox(
                 width: 50,
@@ -93,7 +104,7 @@ class _PreviewState extends State<Preview> {
               IconButton(
                 tooltip: 'Copy to Clipboard',
                 icon: const Icon(Icons.copy, color: Colors.white),
-                onPressed: () {},
+                onPressed: showError,
               ),
               IconButton(
                 tooltip: 'Translate',

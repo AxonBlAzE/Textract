@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 class Converted extends StatefulWidget {
   const Converted({ Key? key }) : super(key: key);
 
@@ -8,6 +9,17 @@ class Converted extends StatefulWidget {
 }
 
 class _ConvertedState extends State<Converted> {
+
+  void showCopied(){
+      Fluttertoast.showToast(
+        msg: 'Copied to Clipboard.',
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.grey,
+        textColor: Colors.white,
+      );
+    }
+
   @override
   Widget build(BuildContext context) {
     Map data = {};
@@ -68,7 +80,7 @@ class _ConvertedState extends State<Converted> {
             IconButton(
               tooltip: 'New Image',
               icon: const Icon(Icons.camera_alt,color: Colors.white),
-              onPressed: () {},
+              onPressed: () {Navigator.popAndPushNamed(context, '/choice');},
             ),
             IconButton(
               tooltip: 'Save as Text',
@@ -79,7 +91,10 @@ class _ConvertedState extends State<Converted> {
             IconButton(
               tooltip: 'Copy to Clipboard',
               icon: const Icon(Icons.copy,color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: text));
+                showCopied();
+              },
             ),
             IconButton(
               tooltip: 'Give Feedback',

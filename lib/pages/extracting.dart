@@ -27,9 +27,9 @@ class _ExtractingState extends State<Extracting> {
     }
 
     File image = data['image'];
-    if(image.isAbsolute){
-      print('image ok');
-    }
+    // if(image.isAbsolute){
+    //   print('image ok');
+    // }
 
     getText() async {
       final FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromFile(image);
