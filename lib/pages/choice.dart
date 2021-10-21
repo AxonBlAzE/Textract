@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'package:textract/services/ocr.dart';
@@ -15,15 +14,25 @@ class _ChoiceState extends State<Choice> {
   captureImageFromCamera() async {
     PickedFile? pickedFile = await ImagePicker().getImage(source: ImageSource.camera,);
     File image = File(pickedFile!.path);
-    setState(() {
-      this.image = image;
-    });
+    if (image.path.isEmpty){
+      Navigator.popAndPushNamed(context, '/choice');
+    } else {
+      setState(() {
+        this.image = image;
+      });
+      Navigator.pushReplacementNamed(context, '/preview',arguments: {
+                        'image': image,
+                      });
+    }
   }
 
   pickImageFromGallery() async {
     PickedFile? pickedFile = await ImagePicker().getImage(source: ImageSource.gallery,);
-    image = File(pickedFile!.path);
-    if (image!.isAbsolute){
+    File image = File(pickedFile!.path);
+    setState(() {
+      this.image = image;
+    });
+    if (image.isAbsolute){
       Navigator.pushReplacementNamed(context, '/preview',arguments: {
                       'image': image,
                     });
@@ -59,8 +68,7 @@ class _ChoiceState extends State<Choice> {
                 ),
                 GestureDetector(
                   onTap: () async{
-                    await captureImageFromCamera();
-                    
+                    captureImageFromCamera();
                   },
                   child: Container(
                     width: 180,
