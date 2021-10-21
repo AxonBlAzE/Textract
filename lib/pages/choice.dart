@@ -22,8 +22,13 @@ class _ChoiceState extends State<Choice> {
 
   pickImageFromGallery() async {
     PickedFile? pickedFile = await ImagePicker().getImage(source: ImageSource.gallery,);
-    File image = File(pickedFile!.path);
-    this.image = image;
+    image = File(pickedFile!.path);
+    if (image!.isAbsolute){
+      Navigator.pushReplacementNamed(context, '/preview',arguments: {
+                      'image': image,
+                    });
+    }
+    // this.image = image;
     // setState(() {
     //   image;
     // });
@@ -54,10 +59,8 @@ class _ChoiceState extends State<Choice> {
                 ),
                 GestureDetector(
                   onTap: () async{
-                    captureImageFromCamera();
-                    Navigator.popAndPushNamed(context, '/preview',arguments: {
-                      'image': image,
-                    });
+                    await captureImageFromCamera();
+                    
                   },
                   child: Container(
                     width: 180,
@@ -103,9 +106,9 @@ class _ChoiceState extends State<Choice> {
                 GestureDetector(
                   onTap: () {
                     pickImageFromGallery();
-                    Navigator.popAndPushNamed(context, '/preview',arguments: {
-                      'image': image,
-                    });
+                    // Navigator.popAndPushNamed(context, '/preview',arguments: {
+                    //   'image': image,
+                    // });
                   },
                   child: Container(
                     width: 180,

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:textract/services/ocr.dart';
+
 class Preview extends StatefulWidget {
 
   @override
@@ -13,14 +13,12 @@ class _PreviewState extends State<Preview> {
   @override
   Widget build(BuildContext context) {
 
-    data = ModalRoute.of(context)?.settings.arguments as Map;
+    if (data.isNotEmpty) {
+      data = data;
+    } else {
+      data = ModalRoute.of(context)?.settings.arguments as Map;
+    }
     File image = data['image'];
-    // if (data.isNotEmpty) {
-    //   data = data;
-    // } else {
-    //   data = ModalRoute.of(context)?.settings.arguments as Map;
-    // }
-    print(data);
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(181, 2, 1, 1),
