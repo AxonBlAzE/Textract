@@ -97,8 +97,8 @@ class _PreviewState extends State<Preview> {
               ),
               IconButton(
                 tooltip: 'Translate',
-                icon: const Icon(Icons.translate, color: Colors.white),
-                onPressed: () {},
+                icon: const Icon(Icons.rate_review, color: Colors.white),
+                onPressed: () {Navigator.popAndPushNamed(context, '/feedbackform');},
               )
             ],
           ),
