@@ -33,6 +33,7 @@ class _TranslatedState extends State<Translated> {
 
     String language = 'ENGLISH';
     String text = data['text'];
+    String translated = data['translated'];
     String to = data['to'];
     language = data['language'].toUpperCase();
 
@@ -61,7 +62,7 @@ class _TranslatedState extends State<Translated> {
               color: Colors.white,
               height: 600,
               width: 380,
-              child: Text(text),
+              child: Text(translated),
             ),
           )
           ],

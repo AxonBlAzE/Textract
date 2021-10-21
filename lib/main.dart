@@ -7,6 +7,7 @@ import 'package:textract/pages/loading.dart';
 import 'package:textract/pages/converted.dart';
 import 'package:textract/pages/feedbackform.dart';
 import 'package:textract/pages/to_language.dart';
+import 'package:textract/pages/translated.dart';
 import 'package:textract/pages/translating.dart';
 
 void main() => runApp(
@@ -21,6 +22,7 @@ void main() => runApp(
           '/converted': (context) => Converted(),
           '/choose-language': (context) => ToLanguage(),
           '/translating':(context) => Translating(),
+          '/translated':(context) => Translated(),
           '/feedbackform': (context) => FeedbackForm(),
         },
       ),

@@ -48,7 +48,7 @@ class _ToLanguageState extends State<ToLanguage> {
               child: Card(
                 child: ListTile(
                   onTap: () {
-                    print(index);
+                    // print(languages[index].language);
                     Navigator.pushNamed(context, '/translating', arguments: {
                       'text': text,
                       'language': languages[index].language,

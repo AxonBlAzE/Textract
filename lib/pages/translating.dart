@@ -25,26 +25,29 @@ class _TranslatingState extends State<Translating> {
     String to = data['to'];
     String language = data['language'];
 
-    Future <String> getTranslated(String text,String to) async {
+    getTranslation(String text,String to) async {
       final translator = GoogleTranslator();
       String from = 'en';
-      var translated = translator.translate(text, from: from, to: to);
+      var translated = await translator.translate(text, from: from, to: to);
+      // print('tranlate :$translated');
       String txt = translated.toString();
       return txt;
     }
 
-    void gotoTranslated() async {
-      String translated = await getTranslated(text, to);
+    gotoTranslated() async {
+      String translated = await getTranslation(text, to);
+      // print('tranlate :$translated');
       await Future.delayed(const Duration(seconds: 2), () async {
         Navigator.popAndPushNamed(context, '/translated', arguments: {
-          'text' : translated,
+          'text': text,
+          'translated' : translated,
           'to': to,
           'language': language,
         });
       });
     }
     
-    setState(() async {
+    setState(() {
       gotoTranslated();
     });
 
