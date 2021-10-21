@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:textract/pages/choice.dart';
+import 'package:textract/pages/extracting.dart';
 import 'package:textract/pages/home.dart';
 import 'package:textract/pages/preview.dart';
 import 'package:textract/pages/loading.dart';
@@ -14,6 +15,7 @@ void main() => runApp(
           '/home': (context) => Home(),
           '/choice': (context) => Choice(),
           '/preview': (context) => Preview(),
+          '/extracting':(context) => Extracting(),
           '/converted': (context) => Converted(),
           '/feedbackform': (context) => FeedbackForm(),
         },

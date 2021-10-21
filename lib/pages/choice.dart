@@ -4,6 +4,8 @@ import 'package:image_picker/image_picker.dart';
 // import 'package:textract/services/ocr.dart';
 
 class Choice extends StatefulWidget {
+  const Choice({Key? key}) : super(key: key);
+
   @override
   State<Choice> createState() => _ChoiceState();
 }

@@ -65,7 +65,9 @@ class _PreviewState extends State<Preview> {
           backgroundColor: Color.fromRGBO(209, 54, 51, 1),
           label: Text('Convert'),
           onPressed: () {
-            Navigator.popAndPushNamed(context, '/converted');
+            Navigator.popAndPushNamed(context, '/extracting',arguments: {
+              'image': image,
+            });
           }),
       bottomNavigationBar: BottomAppBar(
         // shape: CircularNotchedRectangle(),

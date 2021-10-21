@@ -10,6 +10,16 @@ class Converted extends StatefulWidget {
 class _ConvertedState extends State<Converted> {
   @override
   Widget build(BuildContext context) {
+    Map data = {};
+
+    if (data.isNotEmpty) {
+      data = data;
+    } else {
+      data = ModalRoute.of(context)?.settings.arguments as Map;
+    }
+
+    String text = data['text'];
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(181, 2, 1, 1),
       appBar: AppBar(
@@ -35,6 +45,7 @@ class _ConvertedState extends State<Converted> {
               color: Colors.white,
               height: 600,
               width: 380,
+              child: Text(text),
             ),
           )
           ],
