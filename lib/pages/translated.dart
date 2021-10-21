@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-class Converted extends StatefulWidget {
-  const Converted({ Key? key }) : super(key: key);
+
+class Translated extends StatefulWidget {
+  const Translated({ Key? key }) : super(key: key);
 
   @override
-  _ConvertedState createState() => _ConvertedState();
+  _TranslatedState createState() => _TranslatedState();
 }
 
-class _ConvertedState extends State<Converted> {
+class _TranslatedState extends State<Translated> {
 
   void showCopied(){
       Fluttertoast.showToast(
@@ -30,14 +31,17 @@ class _ConvertedState extends State<Converted> {
       data = ModalRoute.of(context)?.settings.arguments as Map;
     }
 
+    String language = 'ENGLISH';
     String text = data['text'];
+    String to = data['to'];
+    language = data['language'].toUpperCase();
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(181, 2, 1, 1),
       appBar: AppBar(
-        title: const Text(
-          'CONVERTED TEXT',
-           style: TextStyle(
+        title: Text(
+          'TRANSLATED TO $language',
+           style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
               color: Colors.white,
