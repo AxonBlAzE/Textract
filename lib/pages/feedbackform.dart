@@ -1,3 +1,6 @@
+import 'dart:html';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:reviews_slider/reviews_slider.dart';
@@ -13,7 +16,8 @@ class _FeedbackFormState extends State<FeedbackForm> {
   final formKey = GlobalKey<FormState>();
   String username = "";
   String email = "";
-  String number = "";
+  late int number;
+  late int rating; 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,16 +38,17 @@ class _FeedbackFormState extends State<FeedbackForm> {
             buildPhone(),
             SizedBox(height: 25),
             ReviewSlider(
-                optionStyle: TextStyle(
+                optionStyle: const TextStyle(
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
                 ),
                 onChange: (int value) {
                   print(value);
+                  rating = value;
                 }),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             buildFeedback(),
-            SizedBox(height: 15,),
+            const SizedBox(height: 15,),
             buildSubmit(),
           ],
         ),
@@ -52,29 +57,29 @@ class _FeedbackFormState extends State<FeedbackForm> {
   }
 
   Widget buildUsername() => TextFormField(
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
           labelText: 'Name/Nickname',
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.red,
             ),
           ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15.0),
-              borderSide: BorderSide(color: Colors.red)),
+              borderSide: const BorderSide(color: Colors.red)),
           labelStyle: TextStyle(color: Colors.grey[300]),
         ),
         onChanged: (value) => setState(() => username = value),
       );
   Widget buildEmail() => TextFormField(
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
           labelText: 'Email',
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.red,
             ),
           ),
@@ -92,7 +97,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
           labelText: 'Phone Number',
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.red,
             ),
           ),
@@ -101,7 +106,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
               borderSide: BorderSide(color: Colors.red)),
           labelStyle: TextStyle(color: Colors.grey[300]),
         ),
-        onChanged: (value) => setState(() => number = value),
+        onChanged: (value) => setState(() => number = int.parse(value)),
       );
 
   // Widget buildFeedback() => TextFormField(
@@ -139,6 +144,15 @@ class _FeedbackFormState extends State<FeedbackForm> {
         ),
         
         child: Text("Submit"),
-        onPressed: () {},
-      );
+        onPressed: () {
+          print(username);
+          print(email);
+          print(number);
+          print(rating);
+          // FirebaseFirestore.instance.runTransaction((transaction) async {
+          //   DocumentSnapshot freshsnap = await transaction.get(document.);
+          //   await transaction
+          });
+      //   },
+      // );
 }
