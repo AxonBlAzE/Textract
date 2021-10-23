@@ -1,6 +1,5 @@
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:reviews_slider/reviews_slider.dart';
@@ -144,15 +143,19 @@ class _FeedbackFormState extends State<FeedbackForm> {
         ),
         
         child: Text("Submit"),
-        onPressed: () {
+        onPressed: () async {
           print(username);
           print(email);
           print(number);
           print(rating);
-          // FirebaseFirestore.instance.runTransaction((transaction) async {
-          //   DocumentSnapshot freshsnap = await transaction.get(document.);
-          //   await transaction
-          });
-      //   },
-      // );
+          await Firebase.initializeApp();
+          FirebaseFirestore.instance.collection('Feedbacks').add({
+                      'name': username,
+                      'email': email,
+                      'number': number,
+                      'rating': rating,
+                      'details': 'testing',
+                });
+        },
+      );
 }
