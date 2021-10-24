@@ -27,7 +27,7 @@ class FeedbackOption extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, './feedbackform');
+                  Navigator.pushNamed(context, '/feedbackform');
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
@@ -42,7 +42,7 @@ class FeedbackOption extends StatelessWidget {
                     Size.fromWidth(350),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   "Give Feedback",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -51,14 +51,14 @@ class FeedbackOption extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, './viewfeed');
+                  Navigator.pushNamed(context, '/viewfeed');
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
@@ -73,7 +73,7 @@ class FeedbackOption extends StatelessWidget {
                     Size.fromWidth(350),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   "View Reviews",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,

@@ -28,7 +28,7 @@ void main() => runApp(
           '/translated': (context) => Translated(),
           '/feedback': (context) => FeedbackOption(),
           '/feedbackform': (context) => FeedbackForm(),
-          // '/viewfeed': (context) => Viewfeedback(),
+          '/viewfeed': (context) => Viewfeedback(),
           '/submitting': (context) => Submitting(),
         },
       ),

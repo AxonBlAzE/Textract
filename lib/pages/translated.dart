@@ -111,7 +111,7 @@ class _TranslatedState extends State<Translated> {
             IconButton(
               tooltip: 'Give Feedback',
               icon: const Icon(Icons.rate_review,color: Colors.white),
-              onPressed: () {Navigator.popAndPushNamed(context, '/feedbackform');},
+              onPressed: () {Navigator.popAndPushNamed(context, '/feedback');},
             )
           ],
         ),
