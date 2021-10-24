@@ -15,14 +15,18 @@ class _FeedbackFormState extends State<FeedbackForm> {
   final formKey = GlobalKey<FormState>();
   String username = "";
   String email = "";
-  late int number;
-  late int rating; 
+  int mobile_number = 0;
+  late int rating;
+  String description = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text("Rate Us", style: TextStyle(color: Colors.white)),
+        title: Text(
+          "Rate Us",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       backgroundColor: const Color(0xFF1B1B1B),
       body: Form(
@@ -42,12 +46,14 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   fontWeight: FontWeight.bold,
                 ),
                 onChange: (int value) {
-                  print(value);
-                  rating = value;
+                  // print(value);
+                  rating = value + 1;
                 }),
             const SizedBox(height: 5),
             buildFeedback(),
-            const SizedBox(height: 15,),
+            const SizedBox(
+              height: 15,
+            ),
             buildSubmit(),
           ],
         ),
@@ -56,57 +62,88 @@ class _FeedbackFormState extends State<FeedbackForm> {
   }
 
   Widget buildUsername() => TextFormField(
-        style: const TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-          labelText: 'Name/Nickname',
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: const BorderSide(
-              color: Colors.red,
-            ),
+      style: const TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+        labelText: 'Name/Nickname',
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          borderSide: const BorderSide(
+            color: Colors.red,
           ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: const BorderSide(color: Colors.red)),
-          labelStyle: TextStyle(color: Colors.grey[300]),
         ),
-        onChanged: (value) => setState(() => username = value),
-      );
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: const BorderSide(color: Colors.red)),
+        labelStyle: TextStyle(color: Colors.grey[300]),
+      ),
+      onChanged: (value) => setState(() => username = value),
+      validator: (String? value) {
+        if (value.toString() == '') {
+          username = "Anonymous";
+          return null;
+        }
+      });
   Widget buildEmail() => TextFormField(
-        style: const TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-          labelText: 'Email',
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: const BorderSide(
-              color: Colors.red,
-            ),
+      style: const TextStyle(color: Colors.white),
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        labelText: 'Email',
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          borderSide: const BorderSide(
+            color: Colors.red,
           ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: BorderSide(color: Colors.red)),
-          labelStyle: TextStyle(color: Colors.grey[300]),
         ),
-        onChanged: (value) => setState(() => email = value),
-      );
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: BorderSide(color: Colors.red)),
+        labelStyle: TextStyle(color: Colors.grey[300]),
+      ),
+      onChanged: (value) => setState(() => email = value),
+      validator: (String? value) {
+        if (value!.isEmpty) {
+          return "Email cannot be empty";
+        } else {
+          if (!value.contains(RegExp(r'^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$'))) {
+            return "This is not a valid Email";
+          } else {
+            return null;
+          }
+        }
+      });
   Widget buildPhone() => TextFormField(
-        style: TextStyle(color: Colors.white),
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        decoration: InputDecoration(
-          labelText: 'Phone Number',
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: const BorderSide(
-              color: Colors.red,
-            ),
+      style: TextStyle(color: Colors.white),
+      keyboardType: TextInputType.number,
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+      decoration: InputDecoration(
+        labelText: 'Phone Number',
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          borderSide: const BorderSide(
+            color: Colors.red,
           ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: BorderSide(color: Colors.red)),
-          labelStyle: TextStyle(color: Colors.grey[300]),
         ),
-        onChanged: (value) => setState(() => number = int.parse(value)),
-      );
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: BorderSide(color: Colors.red)),
+        labelStyle: TextStyle(color: Colors.grey[300]),
+      ),
+      onChanged: (value) => setState(() {
+            if (value.isNotEmpty) {
+              mobile_number = int.parse(value);
+            }
+          }),
+      validator: (String? value) {
+        if (value!.isNotEmpty) {
+          if (!value.contains(RegExp(r'^[789]\d{9}$'))) {
+            return "This is not a valid Phone Number";
+          } else {
+            return null;
+          }
+        } else {
+          return null;
+        }
+      });
 
   // Widget buildFeedback() => TextFormField(
   //   style: TextStyle(color: Colors.white),
@@ -130,32 +167,37 @@ class _FeedbackFormState extends State<FeedbackForm> {
             hintText: "Have something to say about our app..",
             hintStyle: TextStyle(color: Colors.grey[500]),
           ),
+          onChanged: (value) {
+            setState(() {
+              description = value;
+            });
+          },
         ),
       ));
 
   Widget buildSubmit() => TextButton(
-  
         style: TextButton.styleFrom(
-            padding: const EdgeInsets.all(10.0),
-            primary: Colors.white,
-            backgroundColor: Colors.red,
-            textStyle: const TextStyle(fontSize: 18),
+          padding: const EdgeInsets.all(10.0),
+          primary: Colors.white,
+          backgroundColor: Colors.red,
+          textStyle: const TextStyle(fontSize: 18),
         ),
-        
         child: Text("Submit"),
-        onPressed: () async {
-          print(username);
-          print(email);
-          print(number);
-          print(rating);
-          await Firebase.initializeApp();
-          FirebaseFirestore.instance.collection('Feedbacks').add({
-                      'name': username,
-                      'email': email,
-                      'number': number,
-                      'rating': rating,
-                      'details': 'testing',
-                });
+        onPressed: () {
+          validator();
         },
       );
+
+  Future<void> validator() async {
+    if (formKey.currentState!.validate()) {
+      await Firebase.initializeApp();
+      FirebaseFirestore.instance.collection('Feedbacks').add({
+        'name': username,
+        'email': email,
+        'number': mobile_number,
+        'rating': rating,
+        'details': description,
+      });
+    }
+  }
 }

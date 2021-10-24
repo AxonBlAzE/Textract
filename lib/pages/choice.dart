@@ -14,30 +14,38 @@ class _ChoiceState extends State<Choice> {
   File? image;
 
   captureImageFromCamera() async {
-    PickedFile? pickedFile = await ImagePicker().getImage(source: ImageSource.camera,);
-    File image = File(pickedFile!.path);
-    if (image.path.isEmpty){
+    PickedFile? pickedFile = await ImagePicker().getImage(
+      source: ImageSource.camera,
+    );
+    if (pickedFile.toString()=='null') {
       Navigator.popAndPushNamed(context, '/choice');
     } else {
+      File image = File(pickedFile!.path);
       setState(() {
         this.image = image;
       });
-      Navigator.pushReplacementNamed(context, '/preview',arguments: {
-                        'image': image,
-                      });
+      Navigator.pushReplacementNamed(context, '/preview', arguments: {
+        'image': image,
+      });
     }
   }
 
   pickImageFromGallery() async {
-    PickedFile? pickedFile = await ImagePicker().getImage(source: ImageSource.gallery,);
-    File image = File(pickedFile!.path);
-    setState(() {
-      this.image = image;
-    });
-    if (image.isAbsolute){
-      Navigator.pushReplacementNamed(context, '/preview',arguments: {
-                      'image': image,
-                    });
+    PickedFile? pickedFile = await ImagePicker().getImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile.toString() == 'null') {
+      Navigator.popAndPushNamed(context, '/choice');
+    } else {
+      File image = File(pickedFile!.path);
+      setState(() {
+        this.image = image;
+      });
+      if (image.isAbsolute) {
+        Navigator.pushReplacementNamed(context, '/preview', arguments: {
+          'image': image,
+        });
+      }
     }
     // this.image = image;
     // setState(() {
@@ -69,7 +77,7 @@ class _ChoiceState extends State<Choice> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () async{
+                  onTap: () async {
                     captureImageFromCamera();
                   },
                   child: Container(

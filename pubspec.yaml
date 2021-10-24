@@ -42,8 +42,8 @@ dependencies:
   fluttertoast: ^8.0.8
   toast: ^0.1.5
   translator: ^0.1.7
-  cloud_firestore:
-  firebase_core:
+  cloud_firestore: 
+  firebase_core: 
    
   
 
