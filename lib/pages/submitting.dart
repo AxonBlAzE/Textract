@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:cool_alert/cool_alert.dart';
 
 class Submitting extends StatefulWidget {
   const Submitting({ Key? key }) : super(key: key);
@@ -15,6 +16,19 @@ class _SubmittingState extends State<Submitting> {
   
   @override
   Widget build(BuildContext context) {
+
+    Future<Future> buildSuccessPrompt() async => CoolAlert.show(
+      context: context,
+      type: CoolAlertType.success,
+      text: "Feedback Submitted Successfully!",
+      loopAnimation: true,
+      confirmBtnText: "OK",
+      confirmBtnColor: Colors.red,
+      onConfirmBtnTap: () {
+        Navigator.popAndPushNamed(context, '/home');
+      }
+    );
+
     const String msg = "Submitting Your Feeback...";
     Map data = {};
 
@@ -37,7 +51,9 @@ class _SubmittingState extends State<Submitting> {
 
     void gotoSubmitted() async {
       await submit();
-      Navigator.popAndPushNamed(context, '/home');
+      Future.delayed(const Duration(seconds: 2), () async {
+        buildSuccessPrompt();
+      });
     }
 
     setState(() {
@@ -69,3 +85,5 @@ class _SubmittingState extends State<Submitting> {
     );
   }
 }
+
+

@@ -44,6 +44,7 @@ dependencies:
   translator: ^0.1.7
   cloud_firestore: 
   firebase_core: 
+  cool_alert: ^1.1.0
    
   
 

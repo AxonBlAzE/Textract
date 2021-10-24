@@ -354,9 +354,36 @@ class Home extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
+                      Navigator.pushNamed(context, '/feedback');
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.rate_review, color: Colors.white),
+                        SizedBox(width: 6),
+                        Text("Rate Us"),
+                      ],
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
                       Navigator.pushNamed(context, '/choice');
                     },
-                    child: Text("Get Started ->"),
+                    // child: Text("Get Started ->"),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text("Get Started"),
+                        SizedBox(width: 6),
+                        Icon(Icons.arrow_right_alt_outlined, color: Colors.white),
+                      ],
+                    ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.black),
                     ),
