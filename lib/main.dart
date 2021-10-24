@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:textract/pages/choice.dart';
 import 'package:textract/pages/extracting.dart';
 import 'package:textract/pages/feedback.dart';
+import 'package:textract/pages/submitting.dart';
 import 'package:textract/pages/viewfeedback.dart';
 import 'package:textract/pages/home.dart';
 import 'package:textract/pages/preview.dart';
@@ -28,6 +29,7 @@ void main() => runApp(
           '/feedback': (context) => FeedbackOption(),
           '/feedbackform': (context) => FeedbackForm(),
           // '/viewfeed': (context) => Viewfeedback(),
+          '/submitting': (context) => Submitting(),
         },
       ),
     );

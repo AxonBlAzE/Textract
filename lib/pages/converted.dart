@@ -57,7 +57,12 @@ class _ConvertedState extends State<Converted> {
                 color: Colors.white,
                 height: 595,
                 width: 380,
-                child: Text(text),
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Text(text),
+                  ),
+                ),
               ),
             )
           ],
@@ -93,7 +98,7 @@ class _ConvertedState extends State<Converted> {
                   icon: const Icon(Icons.save, color: Colors.white),
                   onPressed: () {},
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 70,
                 ),
                 IconButton(

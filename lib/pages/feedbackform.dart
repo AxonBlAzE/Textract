@@ -183,15 +183,14 @@ class _FeedbackFormState extends State<FeedbackForm> {
           textStyle: const TextStyle(fontSize: 18),
         ),
         child: Text("Submit"),
-        onPressed: () {
-          validator();
+        onPressed: () async {
+          await validator();
         },
       );
 
   Future<void> validator() async {
     if (formKey.currentState!.validate()) {
-      await Firebase.initializeApp();
-      FirebaseFirestore.instance.collection('Feedbacks').add({
+      await Navigator.popAndPushNamed(context, '/submitting', arguments: {
         'name': username,
         'email': email,
         'number': mobile_number,

@@ -62,7 +62,12 @@ class _TranslatedState extends State<Translated> {
               color: Colors.white,
               height: 600,
               width: 380,
-              child: Text(translated),
+              child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(translated),
+                  ),
+                ),
             ),
           )
           ],
