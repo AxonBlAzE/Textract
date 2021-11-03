@@ -32,6 +32,8 @@ class _ConvertedState extends State<Converted> {
 
     String text = data['text'];
 
+    double fontSize = 14;
+
     return Scaffold(
         backgroundColor: Color.fromRGBO(181, 2, 1, 1),
         appBar: AppBar(
@@ -51,18 +53,34 @@ class _ConvertedState extends State<Converted> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Slider(
+            //         value: fontSize,
+            //         onChanged: (newSize) {
+            //           setState(() {
+            //             fontSize = newSize;
+            //           });
+            //         },
+            //         min: 10,
+            //         max: 20,
+            //       ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                color: Colors.white,
-                height: 595,
-                width: 380,
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Text(text),
+              child: Column(
+                children: [
+                  Container(
+                    color: Colors.white,
+                    height: 595,
+                    width: 380,
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(
+                          text,
+                          style: TextStyle(fontSize: fontSize),),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             )
           ],
