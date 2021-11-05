@@ -64,16 +64,22 @@ class _ConvertedState extends State<Converted> {
                     height: 30,
                     width: 30,
                     ),
-                  Slider(
-                          value: fontSize,
-                          onChanged: (newSize) {
-                            setState(() {
-                              fontSize = newSize;
-                            });
-                          },
-                          min: 10,
-                          max: 20,
-                        ),
+                  SizedBox(
+                    width: 270,
+                    child: Slider(
+                            value: fontSize,
+                            onChanged: (newSize) {
+                              setState(() {
+                                fontSize = newSize;
+                              });
+                            },
+                            min: 10,
+                            max: 20,
+                            divisions: 5,
+                            activeColor: Colors.white,
+                            inactiveColor: Colors.white24,
+                          ),
+                  ),
                   const Image(
                     image: AssetImage('./assets/text_inc.png'),
                     height: 40,
