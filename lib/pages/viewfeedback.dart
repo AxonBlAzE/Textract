@@ -28,7 +28,6 @@ class _ViewfeedbackState extends State<Viewfeedback> {
   }
 
   Dil_mange_more() {
-    // print("Dil Mange More .....SheerShah (Vikram Batra)");
     setState(() {
       minlimit += 3;
     });
@@ -69,7 +68,10 @@ class _ViewfeedbackState extends State<Viewfeedback> {
           SizedBox(
             height: 5,
           ),
-          Text(options[textOption]),
+          Text(
+            options[textOption],
+            style: TextStyle(color: Colors.red),
+          ),
         ],
       ),
     );
@@ -93,17 +95,17 @@ class _ViewfeedbackState extends State<Viewfeedback> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(181, 2, 1, 1),
+      backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
-          "FeedBacks",
+          "User Feedbacks",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),
@@ -111,9 +113,15 @@ class _ViewfeedbackState extends State<Viewfeedback> {
           child: flag
               ? ListView.builder(
                   controller: scroll,
-                  // itemExtent: 1,
-                  itemCount: minlimit < data.length ? minlimit : data.length,
+                  itemCount:
+                      minlimit < data.length ? minlimit + 1 : data.length,
                   itemBuilder: (context, i) {
+                    if (i == minlimit) {
+                      return Center(
+                          child: CircularProgressIndicator(
+                        color: Colors.red,
+                      ));
+                    }
                     return Column(
                       children: [
                         Container(
@@ -127,7 +135,19 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Container(
-                                      child: Text(data[i]["name"]),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.red),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(13),
+                                        child: Text(
+                                          data[i]["name"],
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                     Rating(data[i]["rating"]),
                                     // emoji_creator("./assets/5_emoji.png", 4),
@@ -137,7 +157,12 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                                     ? Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             10, 0, 10, 15),
-                                        child: Text(data[i]["details"]),
+                                        child: Text(
+                                          data[i]["details"],
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
                                       )
                                     : SizedBox(
                                         height: 2,
@@ -147,7 +172,11 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: Color.fromRGBO(209, 54, 51, 1),
+                            border: Border.all(
+                              color: Colors.red,
+                              width: 2,
+                            ),
+                            color: Colors.transparent,
                           ),
                         ),
                         SizedBox(
@@ -156,7 +185,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                       ],
                     );
                   })
-              : emoji_creator("./assets/5_emoji.png", 4)),
+              : SizedBox()),
     );
   }
 }
