@@ -371,7 +371,7 @@ class Home extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    width: 110,
+                    width: 10, 
                   ),
                   ElevatedButton(
                     onPressed: () {
