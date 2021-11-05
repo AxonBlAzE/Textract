@@ -17,7 +17,7 @@ void main() => runApp(
       MaterialApp(
         initialRoute: '/',
         routes: {
-          '/': (context) => const Loading(),
+          '/': (context) => Loading(),
           '/home': (context) => Home(),
           '/choice': (context) => Choice(),
           '/preview': (context) => Preview(),

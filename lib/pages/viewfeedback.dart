@@ -11,11 +11,27 @@ class Viewfeedback extends StatefulWidget {
 
 class _ViewfeedbackState extends State<Viewfeedback> {
   bool flag = false;
+  List options = const ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
   var data;
+  int minlimit = 3;
+  ScrollController scroll = ScrollController();
+
   @override
   void initState() {
     super.initState();
     Feed();
+    scroll.addListener(() {
+      if (scroll.position.pixels == scroll.position.maxScrollExtent) {
+        Dil_mange_more();
+      }
+    });
+  }
+
+  Dil_mange_more() {
+    // print("Dil Mange More .....SheerShah (Vikram Batra)");
+    setState(() {
+      minlimit += 3;
+    });
   }
 
   // Future Feed() async {
@@ -40,79 +56,37 @@ class _ViewfeedbackState extends State<Viewfeedback> {
     });
   }
 
+  emoji_creator(path, textOption) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+        children: [
+          CircleAvatar(
+            backgroundImage: AssetImage(path),
+            backgroundColor: Colors.transparent,
+            radius: 24,
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text(options[textOption]),
+        ],
+      ),
+    );
+  }
+
   Rating(rating) {
-    List options = const ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
     switch (rating) {
       case 1:
-        return Column(
-          children: [
-            CircleAvatar(
-              backgroundImage: AssetImage("./assets/1_emoji.png"),
-              backgroundColor: Colors.transparent,
-              radius: 24,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(options[0]),
-          ],
-        );
+        return emoji_creator("./assets/1_emoji.png", 0);
       case 2:
-        return Column(
-          children: [
-            CircleAvatar(
-              backgroundImage: AssetImage("./assets/2_emoji.png"),
-              backgroundColor: Colors.transparent,
-              radius: 24,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(options[1]),
-          ],
-        );
+        return emoji_creator("./assets/2_emoji.png", 1);
       case 3:
-        return Column(
-          children: [
-            CircleAvatar(
-              backgroundImage: AssetImage("./assets/3_emoji.png"),
-              backgroundColor: Colors.transparent,
-              radius: 24,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(options[2]),
-          ],
-        );
+        return emoji_creator("./assets/3_emoji.png", 2);
       case 4:
-        return Column(
-          children: [
-            CircleAvatar(
-              backgroundImage: AssetImage("./assets/4_emoji.png"),
-              backgroundColor: Colors.transparent,
-              radius: 24,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(options[3]),
-          ],
-        );
+        return emoji_creator("./assets/4_emoji.png", 3);
       case 5:
-        return Column(
-          children: [
-            CircleAvatar(
-              backgroundImage: AssetImage("./assets/5_emoji.png"),
-              backgroundColor: Colors.transparent,
-              radius: 24,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(options[4]),
-          ],
-        );
+        return emoji_creator("./assets/5_emoji.png", 4);
     }
   }
 
@@ -134,56 +108,55 @@ class _ViewfeedbackState extends State<Viewfeedback> {
         ),
       ),
       body: Center(
-        child: Column(
-            children: flag
-                ? data
-                    .map<Widget>(
-                      (e) => Column(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.9,
-                            alignment: Alignment.centerLeft,
-                            child: Row(
+          child: flag
+              ? ListView.builder(
+                  controller: scroll,
+                  // itemExtent: 1,
+                  itemCount: minlimit < data.length ? minlimit : data.length,
+                  itemBuilder: (context, i) {
+                    return Column(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          // alignment: Alignment.center,
+                          child: Center(
+                            child: Column(
                               children: [
-                                Column(
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text(
-                                      "NickName",
+                                    Container(
+                                      child: Text(data[i]["name"]),
                                     ),
-                                    Text(
-                                      e['name'],
-                                    ),
-                                    Text(
-                                      "Email",
-                                    ),
-                                    Text(
-                                      e["email"],
-                                    ),
-                                    Text(
-                                      "Phone Number",
-                                    ),
-                                    Text(
-                                      e["number"].toString(),
-                                    ),
+                                    Rating(data[i]["rating"]),
+                                    // emoji_creator("./assets/5_emoji.png", 4),
                                   ],
                                 ),
-                                Rating(e["rating"]),
+                                data[i]["details"] != ''
+                                    ? Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 0, 10, 15),
+                                        child: Text(data[i]["details"]),
+                                      )
+                                    : SizedBox(
+                                        height: 2,
+                                      )
                               ],
                             ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Color.fromRGBO(209, 54, 51, 1),
-                            ),
                           ),
-                          SizedBox(
-                            height: 20,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Color.fromRGBO(209, 54, 51, 1),
                           ),
-                        ],
-                      ),
-                    )
-                    .toList()
-                : []),
-      ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    );
+                  })
+              : emoji_creator("./assets/5_emoji.png", 4)),
     );
   }
 }

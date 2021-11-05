@@ -157,8 +157,10 @@ class _FeedbackFormState extends State<FeedbackForm> {
       ),
       color: const Color(0xFF1B1B1B),
       child: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.fromLTRB(10, 7, 10, 0),
         child: TextField(
+          maxLength: 370,
+          maxLengthEnforcement: MaxLengthEnforcement.enforced,
           style: TextStyle(color: Colors.white),
           maxLines: 10,
           decoration: InputDecoration(
