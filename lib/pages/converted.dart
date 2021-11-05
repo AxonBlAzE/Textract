@@ -100,7 +100,8 @@ class _ConvertedState extends State<Converted> {
                           padding: const EdgeInsets.all(12.0),
                           child: Text(
                             text,
-                            style: TextStyle(fontSize: fontSize),),
+                            style: TextStyle(fontSize: fontSize),
+                          ),
                         ),
                       ),
                     ),
