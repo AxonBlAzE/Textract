@@ -20,6 +20,8 @@ class _ConvertedState extends State<Converted> {
     );
   }
 
+  double fontSize = 14;
+
   @override
   Widget build(BuildContext context) {
     Map data = {};
@@ -32,7 +34,7 @@ class _ConvertedState extends State<Converted> {
 
     String text = data['text'];
 
-    double fontSize = 14;
+    
 
     return Scaffold(
         backgroundColor: Color.fromRGBO(181, 2, 1, 1),
@@ -49,41 +51,58 @@ class _ConvertedState extends State<Converted> {
           elevation: 0,
           centerTitle: true,
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Slider(
-            //         value: fontSize,
-            //         onChanged: (newSize) {
-            //           setState(() {
-            //             fontSize = newSize;
-            //           });
-            //         },
-            //         min: 10,
-            //         max: 20,
-            //       ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    color: Colors.white,
-                    height: 595,
-                    width: 380,
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Text(
-                          text,
-                          style: TextStyle(fontSize: fontSize),),
-                      ),
+                  const Image(
+                    image: AssetImage('./assets/text_dec.png'),
+                    height: 30,
+                    width: 30,
                     ),
-                  ),
+                  Slider(
+                          value: fontSize,
+                          onChanged: (newSize) {
+                            setState(() {
+                              fontSize = newSize;
+                            });
+                          },
+                          min: 10,
+                          max: 20,
+                        ),
+                  const Image(
+                    image: AssetImage('./assets/text_inc.png'),
+                    height: 40,
+                    width: 40,
+                    ),
                 ],
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Container(
+                      color: Colors.white,
+                      height: 595,
+                      width: 380,
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Text(
+                            text,
+                            style: TextStyle(fontSize: fontSize),),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton.extended(
