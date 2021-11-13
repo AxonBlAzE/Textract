@@ -18,6 +18,13 @@ class _ToLanguageState extends State<ToLanguage> {
     Translate(to: 'ko', language: 'Korean', flag: 'flags/south_korea.png'),  
     Translate(to: 'sw', language: 'Swahili', flag: 'flags/kenya.png'),
     Translate(to: 'id', language: 'Indonesian', flag: 'flags/indonesia.png'),  
+    Translate(to: 'ja', language: 'Japanese', flag: 'flags/japan.png'),  
+    Translate(to: 'pt', language: 'Portuguese', flag: 'flags/portugal.png'),  
+    Translate(to: 'ru', language: 'Russian', flag: 'flags/russia.png'),  
+    Translate(to: 'es', language: 'Spanish', flag: 'flags/spain.png'),  
+    Translate(to: 'tr', language: 'Turkish', flag: 'flags/turkey.png'),  
+    Translate(to: 'it', language: 'Italian', flag: 'flags/italy.png'),  
+    Translate(to: 'pl', language: 'Polish', flag: 'flags/poland.png'),  
   ];
 
   @override
@@ -36,7 +43,7 @@ class _ToLanguageState extends State<ToLanguage> {
       backgroundColor: const Color.fromRGBO(181, 2, 1, 1),
       appBar: AppBar(
         backgroundColor: Colors.black12,
-        title: const Text('Pick a Location'),
+        title: const Text('Pick a Language'),
         centerTitle: true,
         elevation: 0,
       ),
