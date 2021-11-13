@@ -47,6 +47,7 @@ dependencies:
   permission_handler: ^7.0.0
   downloads_path_provider: ^0.1.0
   intl: ^0.17.0
+  cool_alert: ^1.1.0
    
   
 

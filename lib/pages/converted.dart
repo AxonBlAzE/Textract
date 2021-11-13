@@ -53,6 +53,8 @@ class _ConvertedState extends State<Converted> {
     }
   }
 
+  double fontSize = 14;
+
   @override
   Widget build(BuildContext context) {
     Map data = {};
@@ -64,6 +66,8 @@ class _ConvertedState extends State<Converted> {
     }
 
     String text = data['text'];
+
+    
 
     return Scaffold(
         backgroundColor: Color.fromRGBO(181, 2, 1, 1),
@@ -80,20 +84,65 @@ class _ConvertedState extends State<Converted> {
           elevation: 0,
           centerTitle: true,
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                color: Colors.white,
-                height: 600,
-                width: 380,
-                child: Text(text),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Image(
+                    image: AssetImage('./assets/text_dec.png'),
+                    height: 30,
+                    width: 30,
+                    ),
+                  SizedBox(
+                    width: 270,
+                    child: Slider(
+                            value: fontSize,
+                            onChanged: (newSize) {
+                              setState(() {
+                                fontSize = newSize;
+                              });
+                            },
+                            min: 10,
+                            max: 20,
+                            divisions: 5,
+                            activeColor: Colors.white,
+                            inactiveColor: Colors.white24,
+                          ),
+                  ),
+                  const Image(
+                    image: AssetImage('./assets/text_inc.png'),
+                    height: 40,
+                    width: 40,
+                    ),
+                ],
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Container(
+                      color: Colors.white,
+                      height: 595,
+                      width: 380,
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Text(
+                            text,
+                            style: TextStyle(fontSize: fontSize),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton.extended(
@@ -150,7 +199,7 @@ class _ConvertedState extends State<Converted> {
                   tooltip: 'Give Feedback',
                   icon: const Icon(Icons.rate_review, color: Colors.white),
                   onPressed: () {
-                    Navigator.popAndPushNamed(context, '/feedbackform');
+                    Navigator.popAndPushNamed(context, '/feedback');
                   },
                 )
               ],
