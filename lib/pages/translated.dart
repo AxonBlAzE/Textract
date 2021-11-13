@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:io';
 import 'package:intl/intl.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:downloads_path_provider/downloads_path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -24,6 +25,27 @@ class _TranslatedState extends State<Translated> {
     );
   }
 
+  void showPermissionDenied() {
+    Fluttertoast.showToast(
+      msg: 'Storage Access Denied.Unable to Access Storage.',
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+    );
+  }
+
+  void showSaved(String name) {
+    Fluttertoast.showToast(
+      // msg: 'Saved as Text Document.',
+      msg: 'Saved as $name.',
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+    );
+  }
+
   Future<bool> _requestPermission(Permission permission) async {
     if (await permission.isGranted) {
       return true;
@@ -37,19 +59,20 @@ class _TranslatedState extends State<Translated> {
     }
   }
 
-  Future<void> saveToFile(String filename, String text) async {
-    print("in function saveToFile");
+ Future<void> saveToFile(String filename, String text) async {
     Directory directory;
     try {
       if (await _requestPermission(Permission.storage)) {
         directory = await DownloadsPathProvider.downloadsDirectory;
         final path = '${directory.path}/$filename';
         final file = File(path);
-        print("Saving $path");
         await file.writeAsString(text);
-      }
+        showSaved(filename);
+      } else {
+        showPermissionDenied();
+      } 
     } on PlatformException {
-      print('Could not get the downloads directory');
+      // print('Could not get the downloads directory');
     }
   }
   double fontSize = 14;
@@ -66,11 +89,12 @@ class _TranslatedState extends State<Translated> {
     String language = 'ENGLISH';
     String text = data['text'];
     String translated = data['translated'];
+    // ignore: unused_local_variable
     String to = data['to'];
     language = data['language'].toUpperCase();
 
     return Scaffold(
-        backgroundColor: Color.fromRGBO(181, 2, 1, 1),
+        backgroundColor: const Color.fromRGBO(181, 2, 1, 1),
         appBar: AppBar(
           title: Text(
             'TRANSLATED TO $language',
@@ -142,9 +166,9 @@ class _TranslatedState extends State<Translated> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton.extended(
-          icon: Icon(Icons.translate),
-          backgroundColor: Color.fromRGBO(209, 54, 51, 1),
-          label: Text('Translate'),
+          icon: const Icon(Icons.translate),
+          backgroundColor: const Color.fromRGBO(209, 54, 51, 1),
+          label: const Text('Translate'),
           onPressed: () {
             Navigator.pushNamed(context, '/choose-language', arguments: {
               'text': text,
@@ -172,13 +196,13 @@ class _TranslatedState extends State<Translated> {
                   onPressed: () {
                     String saveAsText = translated;
                     DateTime now = DateTime.now();
-                    String fileName = "Textract_" +
-                        DateFormat('dd-MMM-yyyy – kk:mm:ss').format(now);
+                    String fileName = "Textract_Files/Textract_" +
+                        DateFormat('dd-MMM-yyyy – kk.mm.ss').format(now);
 
                     saveToFile(fileName + ".txt", saveAsText);
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 70,
                 ),
                 IconButton(

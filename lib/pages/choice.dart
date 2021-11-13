@@ -57,7 +57,7 @@ class _ChoiceState extends State<Choice> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color.fromRGBO(181, 2, 1, 1),
+        backgroundColor: const Color.fromRGBO(181, 2, 1, 1),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -85,7 +85,7 @@ class _ChoiceState extends State<Choice> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
                       border: Border.all(color: Colors.black, width: 2),
-                      color: Color.fromRGBO(209, 54, 51, 1),
+                      color: const Color.fromRGBO(209, 54, 51, 1),
                       boxShadow: const [
                         BoxShadow(
                           color: Colors.black38,
@@ -96,7 +96,7 @@ class _ChoiceState extends State<Choice> {
                       ],
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -133,7 +133,7 @@ class _ChoiceState extends State<Choice> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
                       border: Border.all(color: Colors.black, width: 2),
-                      color: Color.fromRGBO(209, 54, 51, 1),
+                      color: const Color.fromRGBO(209, 54, 51, 1),
                       boxShadow: const [
                         BoxShadow(
                           color: Colors.black38,
@@ -144,7 +144,7 @@ class _ChoiceState extends State<Choice> {
                       ],
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,

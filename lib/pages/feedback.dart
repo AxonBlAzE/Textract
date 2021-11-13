@@ -23,7 +23,7 @@ class FeedbackOption extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
@@ -31,7 +31,7 @@ class FeedbackOption extends StatelessWidget {
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    Color.fromRGBO(209, 54, 51, 1),
+                    const Color.fromRGBO(209, 54, 51, 1),
                   ),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
@@ -39,7 +39,7 @@ class FeedbackOption extends StatelessWidget {
                     ),
                   ),
                   fixedSize: MaterialStateProperty.all(
-                    Size.fromWidth(350),
+                    const Size.fromWidth(350),
                   ),
                 ),
                 child: const Text(
@@ -54,7 +54,7 @@ class FeedbackOption extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            Container(
+            SizedBox(
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
@@ -62,7 +62,7 @@ class FeedbackOption extends StatelessWidget {
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    Color.fromRGBO(209, 54, 51, 1),
+                    const Color.fromRGBO(209, 54, 51, 1),
                   ),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
@@ -70,7 +70,7 @@ class FeedbackOption extends StatelessWidget {
                     ),
                   ),
                   fixedSize: MaterialStateProperty.all(
-                    Size.fromWidth(350),
+                    const Size.fromWidth(350),
                   ),
                 ),
                 child: const Text(
@@ -86,6 +86,5 @@ class FeedbackOption extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

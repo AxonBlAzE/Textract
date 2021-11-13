@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:downloads_path_provider/downloads_path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -24,6 +25,27 @@ class _ConvertedState extends State<Converted> {
     );
   }
 
+  void showPermissionDenied() {
+    Fluttertoast.showToast(
+      msg: 'Storage Access Denied.Unable to Access Storage.',
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+    );
+  }
+
+  void showSaved(String name) {
+    Fluttertoast.showToast(
+      // msg: 'Saved as Text Document.',
+      msg: 'Saved as $name.',
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+    );
+  }
+
   Future<bool> _requestPermission(Permission permission) async {
     if (await permission.isGranted) {
       return true;
@@ -38,18 +60,25 @@ class _ConvertedState extends State<Converted> {
   }
 
   Future<void> saveToFile(String filename, String text) async {
-    print("in function saveToFile");
+    // print("in function saveToFile");
     Directory directory;
     try {
+      // print('inside try');
       if (await _requestPermission(Permission.storage)) {
         directory = await DownloadsPathProvider.downloadsDirectory;
+        // print('$directory');
         final path = '${directory.path}/$filename';
+        // String mypath = '/storage/emulated/0/Textract_Files/textract_file.txt';
+        // String path2 = '/storage/emudlated/0/Download/Textract_13-Nov-2021 – 22 12 41.txt';
         final file = File(path);
-        print("Saving $path");
+        // print("Saving $path");
         await file.writeAsString(text);
+        showSaved(filename);
+      } else {
+        showPermissionDenied();
       } 
     } on PlatformException {
-      print('Could not get the downloads directory');
+      // print('Could not get the downloads directory');
     }
   }
 
@@ -70,7 +99,7 @@ class _ConvertedState extends State<Converted> {
     
 
     return Scaffold(
-        backgroundColor: Color.fromRGBO(181, 2, 1, 1),
+        backgroundColor: const Color.fromRGBO(181, 2, 1, 1),
         appBar: AppBar(
           title: const Text(
             'CONVERTED TEXT',
@@ -146,9 +175,9 @@ class _ConvertedState extends State<Converted> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton.extended(
-          icon: Icon(Icons.translate),
-          backgroundColor: Color.fromRGBO(209, 54, 51, 1),
-          label: Text('Translate'),
+          icon: const Icon(Icons.translate),
+          backgroundColor: const Color.fromRGBO(209, 54, 51, 1),
+          label: const Text('Translate'),
           onPressed: () {
             Navigator.pushNamed(context, '/choose-language', arguments: {
               'text': text,
@@ -174,17 +203,17 @@ class _ConvertedState extends State<Converted> {
                   tooltip: 'Save as Text',
                   icon: const Icon(Icons.save, color: Colors.white),
                   onPressed: () {
-                    String saveAsText = text;
+                    // String saveAsText = text;
                     // print("SaveASTEXT: $saveAsText");
 
                     DateTime now = DateTime.now();
-                    String fileName = "Textract_" +
-                        DateFormat('dd-MMM-yyyy – kk:mm:ss').format(now);
+                    String fileName = "Textract_Files/Textract_" +
+                        DateFormat('dd-MMM-yyyy – kk.mm.ss').format(now);
 
                     saveToFile(fileName + ".txt", text);
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 70,
                 ),
                 IconButton(

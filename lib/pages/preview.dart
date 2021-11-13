@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Preview extends StatefulWidget {
+  const Preview({Key? key}) : super(key: key);
+
 
   @override
   State<Preview> createState() => _PreviewState();
@@ -32,7 +34,7 @@ class _PreviewState extends State<Preview> {
     File image = data['image'];
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(181, 2, 1, 1),
+      backgroundColor: const Color.fromRGBO(181, 2, 1, 1),
       appBar: AppBar(
         title: const Text(
           'SELECTED PICTURE',
@@ -72,9 +74,9 @@ class _PreviewState extends State<Preview> {
           // fit: BoxFit.contain,
           // height: 40,
           // width: 40,),
-          icon: Icon(Icons.image),
-          backgroundColor: Color.fromRGBO(209, 54, 51, 1),
-          label: Text('Convert'),
+          icon: const Icon(Icons.image),
+          backgroundColor: const Color.fromRGBO(209, 54, 51, 1),
+          label: const Text('Convert'),
           onPressed: () {
             Navigator.popAndPushNamed(context, '/extracting',arguments: {
               'image': image,

@@ -12,11 +12,13 @@ class Home extends StatelessWidget {
         "You can also use Translate button to switch from english to another language."
   };
 
+  Home({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color.fromRGBO(181, 2, 1, 1),
+        backgroundColor: const Color.fromRGBO(181, 2, 1, 1),
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.transparent,
@@ -119,7 +121,7 @@ class Home extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(209, 54, 51, 1),
+                          color: const Color.fromRGBO(209, 54, 51, 1),
                           borderRadius: BorderRadius.circular(14),
                           boxShadow: const [
                             BoxShadow(
@@ -145,7 +147,7 @@ class Home extends StatelessWidget {
                         child: Container(
                           width: 250,
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(209, 54, 51, 1),
+                            color: const Color.fromRGBO(209, 54, 51, 1),
                             borderRadius: BorderRadius.circular(14),
                             boxShadow: const [
                               BoxShadow(
@@ -155,7 +157,7 @@ class Home extends StatelessWidget {
                             ],
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
                               data['Step-1'].toString(),
                               style: const TextStyle(
@@ -182,7 +184,7 @@ class Home extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 2),
                       shape: BoxShape.circle,
-                      color: Color.fromRGBO(209, 54, 51, 1),
+                      color: const Color.fromRGBO(209, 54, 51, 1),
                       boxShadow: const [
                         BoxShadow(
                           color: Colors.black38,
@@ -205,7 +207,7 @@ class Home extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(209, 54, 51, 1),
+                          color: const Color.fromRGBO(209, 54, 51, 1),
                           borderRadius: BorderRadius.circular(14),
                           boxShadow: const [
                             BoxShadow(
@@ -227,11 +229,11 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                         child: Container(
                           width: 250,
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(209, 54, 51, 1),
+                            color: const Color.fromRGBO(209, 54, 51, 1),
                             borderRadius: BorderRadius.circular(14),
                             boxShadow: const [
                               BoxShadow(
@@ -241,7 +243,7 @@ class Home extends StatelessWidget {
                             ],
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
                               // "",
                               data['Step-2'].toString(),
@@ -269,7 +271,7 @@ class Home extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 2),
                       shape: BoxShape.circle,
-                      color: Color.fromRGBO(209, 54, 51, 1),
+                      color: const Color.fromRGBO(209, 54, 51, 1),
                       boxShadow: const [
                         BoxShadow(
                           color: Colors.black38,
@@ -297,7 +299,7 @@ class Home extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(209, 54, 51, 1),
+                          color: const Color.fromRGBO(209, 54, 51, 1),
                           borderRadius: BorderRadius.circular(14),
                           boxShadow: const [
                             BoxShadow(
@@ -319,11 +321,11 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                         child: Container(
                           width: 250,
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(209, 54, 51, 1),
+                            color: const Color.fromRGBO(209, 54, 51, 1),
                             borderRadius: BorderRadius.circular(14),
                             boxShadow: const [
                               BoxShadow(
@@ -333,7 +335,7 @@ class Home extends StatelessWidget {
                             ],
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
                               // "",
                               data['Step-3'].toString(),

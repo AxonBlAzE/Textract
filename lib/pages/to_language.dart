@@ -33,10 +33,10 @@ class _ToLanguageState extends State<ToLanguage> {
     String text = data['text'];
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(181, 2, 1, 1),
+      backgroundColor: const Color.fromRGBO(181, 2, 1, 1),
       appBar: AppBar(
         backgroundColor: Colors.black12,
-        title: Text('Pick a Location'),
+        title: const Text('Pick a Location'),
         centerTitle: true,
         elevation: 0,
       ),

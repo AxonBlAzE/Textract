@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:reviews_slider/reviews_slider.dart';
@@ -15,6 +13,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
   final formKey = GlobalKey<FormState>();
   String username = "";
   String email = "";
+  // ignore: non_constant_identifier_names
   int mobile_number = 0;
   late int rating;
   String description = "";
@@ -23,7 +22,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text(
+        title: const Text(
           "Rate Us",
           style: TextStyle(color: Colors.white),
         ),
@@ -32,14 +31,14 @@ class _FeedbackFormState extends State<FeedbackForm> {
       body: Form(
         key: formKey,
         child: ListView(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           children: [
             buildUsername(),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             buildEmail(),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             buildPhone(),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             ReviewSlider(
                 optionStyle: const TextStyle(
                   color: Colors.red,
@@ -96,7 +95,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
         ),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.red)),
+            borderSide: const BorderSide(color: Colors.red)),
         labelStyle: TextStyle(color: Colors.grey[300]),
       ),
       onChanged: (value) => setState(() => email = value),
@@ -112,7 +111,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
         }
       });
   Widget buildPhone() => TextFormField(
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       decoration: InputDecoration(
@@ -125,7 +124,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
         ),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.red)),
+            borderSide: const BorderSide(color: Colors.red)),
         labelStyle: TextStyle(color: Colors.grey[300]),
       ),
       onChanged: (value) => setState(() {
@@ -152,16 +151,16 @@ class _FeedbackFormState extends State<FeedbackForm> {
   // );
   Widget buildFeedback() => Card(
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.red, width: 1),
+        side: const BorderSide(color: Colors.red, width: 1),
         borderRadius: BorderRadius.circular(15.0),
       ),
       color: const Color(0xFF1B1B1B),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(10, 7, 10, 0),
+        padding: const EdgeInsets.fromLTRB(10, 7, 10, 0),
         child: TextField(
           maxLength: 370,
           maxLengthEnforcement: MaxLengthEnforcement.enforced,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
           maxLines: 10,
           decoration: InputDecoration(
             focusedBorder: InputBorder.none,
@@ -184,7 +183,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
           backgroundColor: Colors.red,
           textStyle: const TextStyle(fontSize: 18),
         ),
-        child: Text("Submit"),
+        child: const Text("Submit"),
         onPressed: () async {
           await validator();
         },

@@ -12,6 +12,7 @@ class Viewfeedback extends StatefulWidget {
 class _ViewfeedbackState extends State<Viewfeedback> {
   bool flag = false;
   List options = const ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
+  // ignore: prefer_typing_uninitialized_variables
   var data;
   int minlimit = 3;
   ScrollController scroll = ScrollController();
@@ -27,6 +28,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
     });
   }
 
+  // ignore: non_constant_identifier_names
   Dil_mange_more() {
     setState(() {
       minlimit += 3;
@@ -46,6 +48,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
   //   });
   // }
 
+  // ignore: non_constant_identifier_names
   Future Feed() async {
     await Firebase.initializeApp();
     data = await FirebaseFirestore.instance.collection('Feedbacks').get();
@@ -55,6 +58,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
     });
   }
 
+  // ignore: non_constant_identifier_names
   emoji_creator(path, textOption) {
     return Padding(
       padding: const EdgeInsets.all(15.0),
@@ -65,18 +69,19 @@ class _ViewfeedbackState extends State<Viewfeedback> {
             backgroundColor: Colors.transparent,
             radius: 24,
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Text(
             options[textOption],
-            style: TextStyle(color: Colors.red),
+            style: const TextStyle(color: Colors.red),
           ),
         ],
       ),
     );
   }
 
+  // ignore: non_constant_identifier_names
   Rating(rating) {
     switch (rating) {
       case 1:
@@ -117,7 +122,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                       minlimit < data.length ? minlimit + 1 : data.length,
                   itemBuilder: (context, i) {
                     if (i == minlimit) {
-                      return Center(
+                      return const Center(
                           child: CircularProgressIndicator(
                         color: Colors.red,
                       ));
@@ -143,7 +148,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                                         padding: const EdgeInsets.all(13),
                                         child: Text(
                                           data[i]["name"],
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                           ),
                                         ),
@@ -159,12 +164,12 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                                             10, 0, 10, 15),
                                         child: Text(
                                           data[i]["details"],
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                           ),
                                         ),
                                       )
-                                    : SizedBox(
+                                    : const SizedBox(
                                         height: 2,
                                       )
                               ],
@@ -179,13 +184,13 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                             color: Colors.transparent,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                       ],
                     );
                   })
-              : SizedBox()),
+              : const SizedBox()),
     );
   }
 }

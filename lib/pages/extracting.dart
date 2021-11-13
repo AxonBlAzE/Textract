@@ -37,7 +37,7 @@ class _ExtractingState extends State<Extracting> {
       VisionText visionText = await recognizer.processImage(firebaseVisionImage);
       String result = '';
       for(TextBlock block in visionText.blocks){
-        final String text = block.text;
+        // final String text = block.text;
         for(TextLine line in block.lines){
           for(TextElement element in line.elements){
             result += element.text+ " ";
@@ -51,7 +51,7 @@ class _ExtractingState extends State<Extracting> {
     void gotoConverted() async {
       // String text = 'none';
       String text = await getText();
-      print('text: $text');
+      // print('text: $text');
       // if(text.isEmpty){
       //   print('empty');
       // }
