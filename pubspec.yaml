@@ -44,6 +44,11 @@ dependencies:
   translator: ^0.1.7
   cloud_firestore:
   firebase_core:
+  dio: ^4.0.1
+  path_provider: ^2.0.6
+  permission_handler: ^7.0.0
+  downloads_path_provider: ^0.1.0
+  intl: ^0.17.0
    
   
 

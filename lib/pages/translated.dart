@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:io';
+import 'package:intl/intl.dart';
+import 'package:downloads_path_provider/downloads_path_provider.dart';
+
 
 class Translated extends StatefulWidget {
   const Translated({ Key? key }) : super(key: key);
@@ -20,6 +24,20 @@ class _TranslatedState extends State<Translated> {
         textColor: Colors.white,
       );
     }
+    static Future<void> saveToFile(String filename, String text) async {
+    print("in function saveToFile");
+    Directory directory;
+    try{
+      directory = await DownloadsPathProvider.downloadsDirectory;
+      final path = '${directory.path}/$filename';
+      final file = File(path);
+      print("Saving $path");
+      await file.writeAsString(text);
+    }on PlatformException {
+      print('Could not get the downloads directory');
+    }
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +110,15 @@ class _TranslatedState extends State<Translated> {
             IconButton(
               tooltip: 'Save as Text',
               icon: const Icon(Icons.save,color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                String saveAsText = translated;
+                    print("SaveASTEXT: $saveAsText");
+
+                    DateTime now = DateTime.now();
+                    String fileName = "Textract_"+DateFormat('dd-MMM-yyyy – kk:mm:ss').format(now);
+
+                    saveToFile(fileName+".txt", saveAsText);
+              },
             ),
             SizedBox(width: 70,),
             IconButton(

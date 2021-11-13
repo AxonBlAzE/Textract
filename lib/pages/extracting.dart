@@ -51,7 +51,7 @@ class _ExtractingState extends State<Extracting> {
     void gotoConverted() async {
       // String text = 'none';
       String text = await getText();
-      // print('text: $text');
+      print('text: $text');
       // if(text.isEmpty){
       //   print('empty');
       // }
