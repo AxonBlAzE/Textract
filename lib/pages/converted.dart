@@ -76,7 +76,7 @@ class _ConvertedState extends State<Converted> {
         showSaved(filename);
       } else {
         showPermissionDenied();
-      } 
+      }
     } on PlatformException {
       // print('Could not get the downloads directory');
     }
@@ -95,8 +95,6 @@ class _ConvertedState extends State<Converted> {
     }
 
     String text = data['text'];
-
-    
 
     return Scaffold(
         backgroundColor: const Color.fromRGBO(181, 2, 1, 1),
@@ -125,28 +123,28 @@ class _ConvertedState extends State<Converted> {
                     image: AssetImage('./assets/text_dec.png'),
                     height: 30,
                     width: 30,
-                    ),
+                  ),
                   SizedBox(
                     width: 270,
                     child: Slider(
-                            value: fontSize,
-                            onChanged: (newSize) {
-                              setState(() {
-                                fontSize = newSize;
-                              });
-                            },
-                            min: 10,
-                            max: 20,
-                            divisions: 5,
-                            activeColor: Colors.white,
-                            inactiveColor: Colors.white24,
-                          ),
+                      value: fontSize,
+                      onChanged: (newSize) {
+                        setState(() {
+                          fontSize = newSize;
+                        });
+                      },
+                      min: 10,
+                      max: 20,
+                      divisions: 5,
+                      activeColor: Colors.white,
+                      inactiveColor: Colors.white24,
+                    ),
                   ),
                   const Image(
                     image: AssetImage('./assets/text_inc.png'),
                     height: 40,
                     width: 40,
-                    ),
+                  ),
                 ],
               ),
               Padding(

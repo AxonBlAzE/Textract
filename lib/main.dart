@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:textract/pages/choice.dart';
+import 'package:textract/pages/error_network.dart';
+import 'package:textract/pages/error_page.dart';
 import 'package:textract/pages/extracting.dart';
 import 'package:textract/pages/feedback.dart';
 import 'package:textract/pages/submitting.dart';
@@ -30,6 +32,8 @@ void main() => runApp(
           '/feedbackform': (context) => const FeedbackForm(),
           '/viewfeed': (context) => const Viewfeedback(),
           '/submitting': (context) => const Submitting(),
+          '/error': (context) => Error(),
+          '/errornetwork': (context) => ErrorNetwork(),
         },
       ),
     );

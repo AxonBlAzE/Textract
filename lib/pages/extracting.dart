@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Extracting extends StatefulWidget {
-  const Extracting({ Key? key }) : super(key: key);
+  const Extracting({Key? key}) : super(key: key);
 
   @override
   _ExtractingState createState() => _ExtractingState();
@@ -13,11 +13,10 @@ class Extracting extends StatefulWidget {
 
 class _ExtractingState extends State<Extracting> {
   File? image;
-  final String msg = "Converting to Text"; 
-  
+  final String msg = "Converting to Text";
+
   @override
   Widget build(BuildContext context) {
-    
     Map data = {};
 
     if (data.isNotEmpty) {
@@ -32,18 +31,21 @@ class _ExtractingState extends State<Extracting> {
     // }
 
     getText() async {
-      final FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromFile(image);
-      final TextRecognizer recognizer = FirebaseVision.instance.textRecognizer();
-      VisionText visionText = await recognizer.processImage(firebaseVisionImage);
+      final FirebaseVisionImage firebaseVisionImage =
+          FirebaseVisionImage.fromFile(image);
+      final TextRecognizer recognizer =
+          FirebaseVision.instance.textRecognizer();
+      VisionText visionText =
+          await recognizer.processImage(firebaseVisionImage);
       String result = '';
-      for(TextBlock block in visionText.blocks){
+      for (TextBlock block in visionText.blocks) {
         // final String text = block.text;
-        for(TextLine line in block.lines){
-          for(TextElement element in line.elements){
-            result += element.text+ " ";
+        for (TextLine line in block.lines) {
+          for (TextElement element in line.elements) {
+            result += element.text + " ";
           }
         }
-        result += "\n"; 
+        result += "\n";
       }
       return result;
     }
@@ -58,7 +60,7 @@ class _ExtractingState extends State<Extracting> {
       await Future.delayed(const Duration(seconds: 2), () async {
         // String text = await getText();
         Navigator.popAndPushNamed(context, '/converted', arguments: {
-          'text' : text,
+          'text': text,
         });
       });
     }
@@ -78,14 +80,16 @@ class _ExtractingState extends State<Extracting> {
               size: 50.0,
               duration: Duration(milliseconds: 1200),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Text(
               msg,
-                style: const TextStyle(
-                  color: Colors.red,
-                  fontSize: 25,
-                ),
-              )
+              style: const TextStyle(
+                color: Colors.red,
+                fontSize: 25,
+              ),
+            )
           ],
         ),
       ),

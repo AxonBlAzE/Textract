@@ -44,3 +44,14 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# /lib/pages/error_network.dart
+# /lib/pages/error_page.dart
+# /assets/error_image.png
+# /assets/error_int.png
+# /assets/error_internet_bg.png
+# /assets/error_internet.png
+# /assets/error_internet.png
+/lib/pages/checker.dart
+/lib/main11.dart
+/lib/pages/translating_copy.dart
+/lib/pages/viewfeedback copy.dart

@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:reviews_slider/reviews_slider.dart';
+import 'package:textract/pages/error_network.dart';
 
 class FeedbackForm extends StatefulWidget {
   const FeedbackForm({Key? key}) : super(key: key);
@@ -13,51 +17,106 @@ class _FeedbackFormState extends State<FeedbackForm> {
   final formKey = GlobalKey<FormState>();
   String username = "";
   String email = "";
+  late ConnectivityResult result;
+  bool internet = false;
+  bool display = true;
   // ignore: non_constant_identifier_names
   int mobile_number = 0;
   late int rating;
   String description = "";
+
+  Future<void> connection1() async {
+    bool previous = internet;
+    try {
+      final result = await InternetAddress.lookup("google.com");
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        internet = true;
+      } else {
+        internet = false;
+      }
+    } on SocketException catch (_) {
+      internet = false;
+    }
+    if (previous != internet) {
+      setState(() {
+        internet = internet;
+      });
+    }
+  }
+
+  Future<void> connection2() {
+    return connection1();
+  }
+
+  Future<void> connection() async {
+    var Result = await (Connectivity().checkConnectivity());
+    if (Result == ConnectivityResult.mobile) {
+      return connection2();
+    } else if (Result == ConnectivityResult.wifi) {
+      return connection2();
+    } else {
+      setState(() {
+        internet = false;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    connection();
+  }
+
+  void no() {
+    setState(() {
+      display = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: const Text(
-          "Rate Us",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      backgroundColor: const Color(0xFF1B1B1B),
-      body: Form(
-        key: formKey,
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            buildUsername(),
-            const SizedBox(height: 25),
-            buildEmail(),
-            const SizedBox(height: 25),
-            buildPhone(),
-            const SizedBox(height: 25),
-            ReviewSlider(
-                optionStyle: const TextStyle(
-                  color: Colors.red,
-                  fontWeight: FontWeight.bold,
-                ),
-                onChange: (int value) {
-                  // print(value);
-                  rating = value + 1;
-                }),
-            const SizedBox(height: 5),
-            buildFeedback(),
-            const SizedBox(
-              height: 15,
+    return display
+        ? Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.black,
+              title: const Text(
+                "Rate Us",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
-            buildSubmit(),
-          ],
-        ),
-      ),
-    );
+            backgroundColor: const Color(0xFF1B1B1B),
+            body: Form(
+              key: formKey,
+              child: ListView(
+                padding: const EdgeInsets.all(16),
+                children: [
+                  buildUsername(),
+                  const SizedBox(height: 25),
+                  buildEmail(),
+                  const SizedBox(height: 25),
+                  buildPhone(),
+                  const SizedBox(height: 25),
+                  ReviewSlider(
+                      optionStyle: const TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onChange: (int value) {
+                        // print(value);
+                        rating = value + 1;
+                      }),
+                  const SizedBox(height: 5),
+                  buildFeedback(),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  buildSubmit(),
+                ],
+              ),
+            ),
+          )
+        : ErrorNetwork();
   }
 
   Widget buildUsername() => TextFormField(
@@ -191,13 +250,15 @@ class _FeedbackFormState extends State<FeedbackForm> {
 
   Future<void> validator() async {
     if (formKey.currentState!.validate()) {
-      await Navigator.popAndPushNamed(context, '/submitting', arguments: {
-        'name': username,
-        'email': email,
-        'number': mobile_number,
-        'rating': rating,
-        'details': description,
-      });
+      internet
+          ? await Navigator.popAndPushNamed(context, '/submitting', arguments: {
+              'name': username,
+              'email': email,
+              'number': mobile_number,
+              'rating': rating,
+              'details': description,
+            })
+          : no();
     }
   }
 }

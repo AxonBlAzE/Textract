@@ -59,7 +59,7 @@ class _TranslatedState extends State<Translated> {
     }
   }
 
- Future<void> saveToFile(String filename, String text) async {
+  Future<void> saveToFile(String filename, String text) async {
     Directory directory;
     try {
       if (await _requestPermission(Permission.storage)) {
@@ -70,11 +70,12 @@ class _TranslatedState extends State<Translated> {
         showSaved(filename);
       } else {
         showPermissionDenied();
-      } 
+      }
     } on PlatformException {
       // print('Could not get the downloads directory');
     }
   }
+
   double fontSize = 14;
   @override
   Widget build(BuildContext context) {
@@ -113,44 +114,44 @@ class _TranslatedState extends State<Translated> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Image(
                     image: AssetImage('./assets/text_dec.png'),
                     height: 30,
                     width: 30,
-                    ),
+                  ),
                   SizedBox(
                     width: 270,
                     child: Slider(
-                            value: fontSize,
-                            onChanged: (newSize) {
-                              setState(() {
-                                fontSize = newSize;
-                              });
-                            },
-                            min: 10,
-                            max: 20,
-                            divisions: 5,
-                            activeColor: Colors.white,
-                            inactiveColor: Colors.white24,
-                          ),
+                      value: fontSize,
+                      onChanged: (newSize) {
+                        setState(() {
+                          fontSize = newSize;
+                        });
+                      },
+                      min: 10,
+                      max: 20,
+                      divisions: 5,
+                      activeColor: Colors.white,
+                      inactiveColor: Colors.white24,
+                    ),
                   ),
                   const Image(
                     image: AssetImage('./assets/text_inc.png'),
                     height: 40,
                     width: 40,
-                    ),
+                  ),
                 ],
               ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                color: Colors.white,
-                height: 600,
-                width: 380,
-                child: SingleChildScrollView(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  color: Colors.white,
+                  height: 600,
+                  width: 380,
+                  child: SingleChildScrollView(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
@@ -159,8 +160,8 @@ class _TranslatedState extends State<Translated> {
                       ),
                     ),
                   ),
-              ),
-            )
+                ),
+              )
             ],
           ),
         ),
