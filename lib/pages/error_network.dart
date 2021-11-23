@@ -12,27 +12,27 @@ class ErrorNetwork extends StatelessWidget {
         elevation: 0,
       ),
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width * .9,
           // decoration: BoxDecoration(border: Border.all(color: Colors.red)),
           child: Column(
             children: [
-              CircleAvatar(
-                backgroundImage: const AssetImage("./assets/error_int.png"),
+              const CircleAvatar(
+                backgroundImage: AssetImage("./assets/error_int.png"),
                 radius: 120,
                 backgroundColor: Colors.transparent,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Text(
+              const Text(
                 "NO INTERNET CONNECTION",
                 style: TextStyle(color: Colors.red, fontSize: 20),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "You are not connected to the internet. Please connect to the internet and try again",
                 style: TextStyle(
                   color: Colors.red,
@@ -42,7 +42,7 @@ class ErrorNetwork extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 "Check your internet connection. If you see this error even if your internet connection is working please mail us on textract-help@textract.com",
                 style: TextStyle(
                   color: Colors.red,

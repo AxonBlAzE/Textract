@@ -35,9 +35,9 @@ class Error extends StatelessWidget {
               // const SizedBox(
               //   height: 10,
               // ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
-                child: const Text(
+              const Padding(
+                padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                child: Text(
                   "We have encountered an error. If this problem persists, Contact Us.",
                   style: TextStyle(fontSize: 14),
                 ),
@@ -49,7 +49,7 @@ class Error extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, '/home');
                 },
-                child: Text("Close"),
+                child: const Text("Close"),
               )
             ],
           ),

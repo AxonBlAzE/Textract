@@ -49,6 +49,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
   }
 
   Future<void> connection() async {
+    // ignore: non_constant_identifier_names
     var Result = await (Connectivity().checkConnectivity());
     if (Result == ConnectivityResult.mobile) {
       return connection2();
@@ -63,6 +64,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     connection();
@@ -116,7 +118,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
               ),
             ),
           )
-        : ErrorNetwork();
+        : const ErrorNetwork();
   }
 
   Widget buildUsername() => TextFormField(

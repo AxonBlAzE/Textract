@@ -32,8 +32,8 @@ void main() => runApp(
           '/feedbackform': (context) => const FeedbackForm(),
           '/viewfeed': (context) => const Viewfeedback(),
           '/submitting': (context) => const Submitting(),
-          '/error': (context) => Error(),
-          '/errornetwork': (context) => ErrorNetwork(),
+          '/error': (context) => const Error(),
+          '/errornetwork': (context) => const ErrorNetwork(),
         },
       ),
     );

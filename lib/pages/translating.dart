@@ -47,6 +47,7 @@ class _TranslatingState extends State<Translating> {
 
   Future<void> connection() async {
     first++;
+    // ignore: non_constant_identifier_names
     var Result = await (Connectivity().checkConnectivity());
     if (Result == ConnectivityResult.mobile) {
       return connection2();
@@ -59,6 +60,7 @@ class _TranslatingState extends State<Translating> {
     }
   }
 
+  // ignore: non_constant_identifier_names
   Future<void> _connection_change(ConnectivityResult result) async {
     setState(() {
       connection();
@@ -73,6 +75,7 @@ class _TranslatingState extends State<Translating> {
     syncer = Connectivity().onConnectivityChanged.listen(_connection_change);
   }
 
+  @override
   dispose() {
     super.dispose();
     syncer.cancel();
@@ -110,6 +113,7 @@ class _TranslatingState extends State<Translating> {
     gotoTranslated() async {
       String translated = await getTranslation(text, to);
       // print('tranlate :$translated');
+      // ignore: unnecessary_null_comparison
       if (translated != null) {
         await Future.delayed(const Duration(seconds: 2), () async {
           Navigator.popAndPushNamed(context, '/translated', arguments: {
@@ -121,12 +125,12 @@ class _TranslatingState extends State<Translating> {
         });
       } else {
         connection();
-        internet ? Error() : SizedBox();
+        internet ? const Error() : const SizedBox();
       }
     }
 
     setState(() {
-      internet ? gotoTranslated() : SizedBox();
+      internet ? gotoTranslated() : const SizedBox();
     });
 
     return internet
@@ -156,7 +160,7 @@ class _TranslatingState extends State<Translating> {
             ),
           )
         : first >= 2
-            ? SizedBox()
-            : ErrorNetwork();
+            ? const SizedBox()
+            : const ErrorNetwork();
   }
 }

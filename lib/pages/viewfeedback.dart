@@ -254,7 +254,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                         );
                       })
                   : first <= 3
-                      ? Center(
+                      ? const Center(
                           child: CircularProgressIndicator(
                             color: Colors.red,
                           ),
@@ -263,11 +263,11 @@ class _ViewfeedbackState extends State<Viewfeedback> {
             ),
           )
         : first <= 1
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(
                   color: Colors.red,
                 ),
               )
-            : ErrorNetwork();
+            : const ErrorNetwork();
   }
 }
