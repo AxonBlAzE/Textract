@@ -1,12 +1,6 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:textract/pages/error_network.dart';
-import 'package:textract/pages/error_page.dart';
 
 class Viewfeedback extends StatefulWidget {
   const Viewfeedback({Key? key}) : super(key: key);
@@ -19,69 +13,19 @@ class _ViewfeedbackState extends State<Viewfeedback> {
   bool flag = false;
   List options = const ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
   var data;
-  int minlimit = 3;
+  int minlimit = 4;
   ScrollController scroll = ScrollController();
-  late ConnectivityResult result;
-  bool internet = false;
-  int first = -1;
-  late StreamSubscription<ConnectivityResult> syncer;
-
-  Future<void> connection1() async {
-    bool previous = internet;
-    try {
-      final result = await InternetAddress.lookup("google.com");
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        internet = true;
-      } else {
-        internet = false;
-      }
-    } on Exception catch (_) {
-      setState(() {
-        internet = false;
-      });
-    }
-    if (previous != internet) {
-      setState(() {
-        internet ? Feed() : null;
-        internet = internet;
-        
-      });
-      // print(internet);
-    }
-  }
-
-  Future<void> connection2() {
-    return connection1();
-  }
-
-  Future<void> connection() async {
-    first++;
-    var Result = await (Connectivity().checkConnectivity());
-    if (Result == ConnectivityResult.mobile) {
-      return connection2();
-    } else if (Result == ConnectivityResult.wifi) {
-      return connection2();
-    } else {
-      setState(() {
-        internet = false;
-      });
-    }
-  }
-
-  Future<void> _connection_change(ConnectivityResult result) async {
-    connection();
-  }
-
-  dispose() {
-    super.dispose();
-    syncer.cancel();
-  }
 
   @override
+  // if (data.isNotEmpty) {
+  //     data = data;
+  //   } else {
+  //     data = ModalRoute.of(context)?.settings.arguments as Map;
+  //   }
+
   void initState() {
     super.initState();
-    connection();
-    syncer = Connectivity().onConnectivityChanged.listen(_connection_change);
+    Feed();
     scroll.addListener(() {
       if (scroll.position.pixels == scroll.position.maxScrollExtent) {
         Dil_mange_more();
@@ -108,21 +52,21 @@ class _ViewfeedbackState extends State<Viewfeedback> {
   //   });
   // }
 
-  // ignore: non_constant_identifier_names
   Future Feed() async {
     await Firebase.initializeApp();
     data = await FirebaseFirestore.instance.collection('Feedbacks').get();
+    // print(data.length);
     setState(() {
       data = data.docs;
-      // data = [];
       flag = true;
     });
+    // print(data.length);
+    // print(data);
   }
 
-  // ignore: non_constant_identifier_names
   emoji_creator(path, textOption) {
     return Padding(
-      padding: EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(15.0),
       child: Column(
         children: [
           CircleAvatar(
@@ -130,7 +74,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
             backgroundColor: Colors.transparent,
             radius: 24,
           ),
-           SizedBox(
+          SizedBox(
             height: 5,
           ),
           Text(
@@ -142,7 +86,6 @@ class _ViewfeedbackState extends State<Viewfeedback> {
     );
   }
 
-  // ignore: non_constant_identifier_names
   Rating(rating) {
     switch (rating) {
       case 1:
@@ -160,115 +103,98 @@ class _ViewfeedbackState extends State<Viewfeedback> {
 
   @override
   Widget build(BuildContext context) {
-    first++;
-    return internet
-        ? Scaffold(
-            backgroundColor: Colors.black,
-            appBar: AppBar(
-              centerTitle: true,
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              title: const Text(
-                "User Feedbacks",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            body: Center(
-              child: data.toString() != '[]' && data.toString() != 'null'
-                  ? ListView.builder(
-                      controller: scroll,
-                      itemCount:
-                          minlimit < data.length ? minlimit + 1 : data.length,
-                      itemBuilder: (context, i) {
-                        if (i == minlimit) {
-                          return Center(
-                              child: CircularProgressIndicator(
-                            color: Colors.red,
-                          ));
-                        }
-                        return Column(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              // alignment: Alignment.center,
-                              child: Center(
-                                child: Column(
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text(
+          "User Feedbacks",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Colors.white,
+          ),
+        ),
+      ),
+      body: Center(
+          child: flag
+              ? ListView.builder(
+                  controller: scroll,
+                  itemCount:
+                      minlimit < data.length ? minlimit + 1 : data.length,
+                  itemBuilder: (context, i) {
+                    if (i == minlimit) {
+                      return Center(
+                          child: CircularProgressIndicator(
+                        color: Colors.red,
+                      ));
+                    }
+                    return Column(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          // alignment: Alignment.center,
+                          child: Center(
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.red),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(13),
-                                            child: Text(
-                                              data[i]["name"],
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.red),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(13),
+                                        child: Text(
+                                          data[i]["name"],
+                                          style: TextStyle(
+                                            color: Colors.white,
                                           ),
                                         ),
-                                        Rating(data[i]["rating"]),
-                                      ],
+                                      ),
                                     ),
-                                    data[i]["details"] != ''
-                                        ? Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 0, 10, 15),
-                                            child: Text(
-                                              data[i]["details"],
-                                              style:  TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          )
-                                        :  SizedBox(
-                                            height: 2,
-                                          )
+                                    Rating(data[i]["rating"]),
+                                    // emoji_creator("./assets/5_emoji.png", 4),
                                   ],
                                 ),
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: Colors.red,
-                                  width: 2,
-                                ),
-                                color: Colors.transparent,
-                              ),
+                                data[i]["details"] != ''
+                                    ? Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 0, 10, 15),
+                                        child: Text(
+                                          data[i]["details"],
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      )
+                                    : SizedBox(
+                                        height: 2,
+                                      )
+                              ],
                             ),
-                             SizedBox(
-                              height: 20,
-                            ),
-                          ],
-                        );
-                      })
-                  : first <= 3
-                      ? Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.red,
                           ),
-                        )
-                      : Error(),
-            ),
-          )
-        : first <= 1
-            ? Center(
-                child: CircularProgressIndicator(
-                  color: Colors.red,
-                ),
-              )
-            : ErrorNetwork();
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Colors.red,
+                              width: 2,
+                            ),
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    );
+                  })
+              : SizedBox()),
+    );
   }
 }

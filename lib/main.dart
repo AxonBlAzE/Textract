@@ -5,6 +5,7 @@ import 'package:textract/pages/error_page.dart';
 import 'package:textract/pages/extracting.dart';
 import 'package:textract/pages/feedback.dart';
 import 'package:textract/pages/submitting.dart';
+// import 'package:textract/pages/viewfeedbacknew.dart';
 import 'package:textract/pages/viewfeedback.dart';
 import 'package:textract/pages/home.dart';
 import 'package:textract/pages/preview.dart';
