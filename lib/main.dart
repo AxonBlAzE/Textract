@@ -17,6 +17,7 @@ import 'package:textract/pages/translating.dart';
 
 void main() => runApp(
       MaterialApp(
+        debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
           '/': (context) => const Loading(),

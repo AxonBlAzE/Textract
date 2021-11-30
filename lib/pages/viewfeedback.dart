@@ -18,7 +18,6 @@ class Viewfeedback extends StatefulWidget {
 class _ViewfeedbackState extends State<Viewfeedback> {
   bool flag = false;
   List options = const ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
-  // ignore: prefer_typing_uninitialized_variables
   var data;
   int minlimit = 3;
   ScrollController scroll = ScrollController();
@@ -45,7 +44,9 @@ class _ViewfeedbackState extends State<Viewfeedback> {
       setState(() {
         internet ? Feed() : null;
         internet = internet;
+        
       });
+      // print(internet);
     }
   }
 
@@ -121,7 +122,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
   // ignore: non_constant_identifier_names
   emoji_creator(path, textOption) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(15.0),
       child: Column(
         children: [
           CircleAvatar(
@@ -129,12 +130,12 @@ class _ViewfeedbackState extends State<Viewfeedback> {
             backgroundColor: Colors.transparent,
             radius: 24,
           ),
-          const SizedBox(
+           SizedBox(
             height: 5,
           ),
           Text(
             options[textOption],
-            style: const TextStyle(color: Colors.red),
+            style: TextStyle(color: Colors.red),
           ),
         ],
       ),
@@ -184,7 +185,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                           minlimit < data.length ? minlimit + 1 : data.length,
                       itemBuilder: (context, i) {
                         if (i == minlimit) {
-                          return const Center(
+                          return Center(
                               child: CircularProgressIndicator(
                             color: Colors.red,
                           ));
@@ -209,10 +210,10 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                                                 BorderRadius.circular(20),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(13),
+                                            padding: EdgeInsets.all(13),
                                             child: Text(
                                               data[i]["name"],
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                 color: Colors.white,
                                               ),
                                             ),
@@ -223,16 +224,16 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                                     ),
                                     data[i]["details"] != ''
                                         ? Padding(
-                                            padding: const EdgeInsets.fromLTRB(
+                                            padding: EdgeInsets.fromLTRB(
                                                 10, 0, 10, 15),
                                             child: Text(
                                               data[i]["details"],
-                                              style: const TextStyle(
+                                              style:  TextStyle(
                                                 color: Colors.white,
                                               ),
                                             ),
                                           )
-                                        : const SizedBox(
+                                        :  SizedBox(
                                             height: 2,
                                           )
                                   ],
@@ -247,14 +248,14 @@ class _ViewfeedbackState extends State<Viewfeedback> {
                                 color: Colors.transparent,
                               ),
                             ),
-                            const SizedBox(
+                             SizedBox(
                               height: 20,
                             ),
                           ],
                         );
                       })
                   : first <= 3
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: Colors.red,
                           ),
@@ -263,11 +264,11 @@ class _ViewfeedbackState extends State<Viewfeedback> {
             ),
           )
         : first <= 1
-            ? const Center(
+            ? Center(
                 child: CircularProgressIndicator(
                   color: Colors.red,
                 ),
               )
-            : const ErrorNetwork();
+            : ErrorNetwork();
   }
 }

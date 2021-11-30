@@ -210,7 +210,7 @@ class _TranslatedState extends State<Translated> {
                   tooltip: 'Copy to Clipboard',
                   icon: const Icon(Icons.copy, color: Colors.white),
                   onPressed: () {
-                    Clipboard.setData(ClipboardData(text: text));
+                    Clipboard.setData(ClipboardData(text: translated));
                     showCopied();
                   },
                 ),
@@ -218,7 +218,7 @@ class _TranslatedState extends State<Translated> {
                   tooltip: 'Give Feedback',
                   icon: const Icon(Icons.rate_review, color: Colors.white),
                   onPressed: () {
-                    Navigator.popAndPushNamed(context, '/feedbackform');
+                    Navigator.popAndPushNamed(context, '/feedback');
                   },
                 )
               ],
