@@ -17,6 +17,7 @@ class _ExtractingState extends State<Extracting> {
   File? image;
   final String msg = "Converting to Text";
   var data;
+  bool flag = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class _ExtractingState extends State<Extracting> {
     }
 
     setState(() {
-      gotoConverted();
+      gotoViewFeedback();
     });
 
     return Scaffold(
