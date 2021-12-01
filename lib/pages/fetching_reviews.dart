@@ -22,7 +22,6 @@ class _FetchingState extends State<Fetching> {
   var data;
   bool flag = false;
   bool internet = false;
-  late StreamSubscription<ConnectivityResult> syncer;
 
   @override
   Future<void> connection1() async {
@@ -70,11 +69,6 @@ class _FetchingState extends State<Fetching> {
     connection();
   }
 
-  dispose() {
-    super.dispose();
-    syncer.cancel();
-  }
-
   @override
   Widget build(BuildContext context) {
     
@@ -82,11 +76,9 @@ class _FetchingState extends State<Fetching> {
       await Firebase.initializeApp();
       data = await FirebaseFirestore.instance.collection('Feedbacks').get();
       // print(data.length);
-      setState(() {
-      data = data.docs;
-      flag = true;
-      });
+      return data;
     }
+
 
     gotoViewFeedback() async {
       // String text = 'none';
@@ -98,7 +90,8 @@ class _FetchingState extends State<Fetching> {
       if(internet == false){
         Navigator.popAndPushNamed(context, '/errornetwork');
       } 
-      await getFeedBack();
+      data = await getFeedBack();
+      flag = true;
       await Future.delayed(const Duration(seconds: 1), () async {
         // String text = await getText();
         Navigator.popAndPushNamed(context, '/viewfeed', arguments: {

@@ -104,7 +104,7 @@ class _ViewfeedbackState extends State<Viewfeedback> {
       reviews = ModalRoute.of(context)?.settings.arguments as Map;
     }
 
-    data = reviews['data'];
+    data = reviews['data'].docs;
     flag = reviews['flag'];
     
     return Scaffold(
