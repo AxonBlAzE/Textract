@@ -12,20 +12,15 @@ class Viewfeedback extends StatefulWidget {
 class _ViewfeedbackState extends State<Viewfeedback> {
   bool flag = false;
   List options = const ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
+  Map reviews = {};
   var data;
   int minlimit = 4;
   ScrollController scroll = ScrollController();
 
   @override
-  // if (data.isNotEmpty) {
-  //     data = data;
-  //   } else {
-  //     data = ModalRoute.of(context)?.settings.arguments as Map;
-  //   }
-
   void initState() {
     super.initState();
-    Feed();
+    // Feed();
     scroll.addListener(() {
       if (scroll.position.pixels == scroll.position.maxScrollExtent) {
         Dil_mange_more();
@@ -103,6 +98,15 @@ class _ViewfeedbackState extends State<Viewfeedback> {
 
   @override
   Widget build(BuildContext context) {
+      if (reviews.isNotEmpty) {
+      reviews = reviews;
+    } else {
+      reviews = ModalRoute.of(context)?.settings.arguments as Map;
+    }
+
+    data = reviews['data'];
+    flag = reviews['flag'];
+    
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(

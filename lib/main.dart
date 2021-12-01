@@ -4,6 +4,7 @@ import 'package:textract/pages/error_network.dart';
 import 'package:textract/pages/error_page.dart';
 import 'package:textract/pages/extracting.dart';
 import 'package:textract/pages/feedback.dart';
+import 'package:textract/pages/fetching_reviews.dart';
 import 'package:textract/pages/submitting.dart';
 // import 'package:textract/pages/viewfeedbacknew.dart';
 import 'package:textract/pages/viewfeedback.dart';
@@ -36,6 +37,7 @@ void main() => runApp(
           '/submitting': (context) => const Submitting(),
           '/error': (context) => const Error(),
           '/errornetwork': (context) => const ErrorNetwork(),
+          '/fetching': (context) => const Fetching(),
         },
       ),
     );

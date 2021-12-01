@@ -6,16 +6,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class Extracting extends StatefulWidget {
-  const Extracting({Key? key}) : super(key: key);
+class Fetching extends StatefulWidget {
+  const Fetching({Key? key}) : super(key: key);
 
   @override
-  _ExtractingState createState() => _ExtractingState();
+  _FetchingState createState() => _FetchingState();
 }
 
-class _ExtractingState extends State<Extracting> {
+class _FetchingState extends State<Fetching> {
   File? image;
-  final String msg = "Converting to Text";
+  final String msg = "Fetching Reviews";
   var data;
   bool flag = false;
 
@@ -38,10 +38,12 @@ class _ExtractingState extends State<Extracting> {
       // if(text.isEmpty){
       //   print('empty');
       // }
+      await getFeedBack();
       await Future.delayed(const Duration(seconds: 2), () async {
         // String text = await getText();
         Navigator.popAndPushNamed(context, '/viewfeed', arguments: {
           'data': data,
+          'flag': flag,
         });
       });
     }

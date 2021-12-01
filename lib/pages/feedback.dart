@@ -58,7 +58,8 @@ class FeedbackOption extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/viewfeed');
+                  // Navigator.pushNamed(context, '/viewfeed');
+                  Navigator.pushNamed(context, '/fetching');
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
