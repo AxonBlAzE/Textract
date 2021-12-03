@@ -19,41 +19,74 @@ Have you ever needed to extract text from a picture but couldn't and ended up ha
 
 ## Steps to Use 
 
-### Step 1 
+After starting the app the user will be directed to the home screen where they can see the description and 3 easy steps to use our app.They will be explained below.
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-103229.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/Screenshot_20211203-103741__01.jpg" width="200" height="400">
+
+After reading them the user can click on get started button.
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-104053.jpg" width="200" height="400">
+
+### Step 1
 Simply choose an image from the gallery or take a new one.
-![ss](./assets/Textract Images/Screenshot_20211203-104112.jpg)
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-104112.jpg" width="200" height="400">
 
 The Selected Image will be displayed on the Preview Screen.
-![ss](./assets/Textract Images/Screenshot_20211203-104146.jpg)
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-104146.jpg" width="200" height="400">
 
 ### Step 2 
 By pressing the convert button, you may now transform the image to text.
-![ss](./assets/Textract Images/Screenshot_20211203-104202__01.jpg)
-![ss](./assets/Textract Images/Screenshot_20211203-104212.jpg)
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-104202__01.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/Screenshot_20211203-104212.jpg" width="200" height="400">
 
 By Clicking on the Copy to Clipboard Button the Extracted Text will be copied.The user is now free to paste this text where they want.
-![ss](./assets/Textract Images/Screenshot_20211203-104234.jpg)
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-104234.jpg" width="200" height="400">
 
 The user can also Save the Extracted Text in a .txt file by clicking on the Save As Text button 
-![ss](./assets/Textract Images/Screenshot_20211203-104251.jpg)
-
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-104251.jpg" width="200" height="400">
 
 ### Step 3 
 You can also use the Translate button to switch from one language to another. The user can choose from the list of available languages.
-![ss](./assets/Textract Images/Screenshot_20211203-104311.jpg)
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-104311.jpg" width="200" height="400">
 
 After selecting a language the text will be translated.
-![ss](./assets/Textract Images/Screenshot_20211203-104427.jpg)
-![ss](./assets/Textract Images/Screenshot_20211203-104449.jpg)
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-104427.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/Screenshot_20211203-104449.jpg" width="200" height="400">
 
 The user can continue to translate the text as many times as they want.
-![ss](./assets/Textract Images/Screenshot_20211203-104532.jpg)
-![ss](./assets/Textract Images/Screenshot_20211203-104538.jpg)
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20211203-104532.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/Screenshot_20211203-104538.jpg" width="200" height="400">
 
 ## Stack
 
 - Dart
 - Flutter
 - Firebase for Backend.
-- Azure OCR/Firebase ML Vision for Image to Text Conversion.
-- Google Cloud Translate/Azure Text Translation for translating text from one language to another.
+- Firebase ML Vision for Image to Text Conversion.
+- Google Cloud Translate for translating text from one language to another.
+
+## Contributor
+| Sr No. | Name              | e-mail                 | git-profile    | git-profile-link    |
+| ------ | ----------------- | ---------------------- | -------------- | -------------- |
+| 1.     | Shreyans Mulkutkar| s.mulkutkar@somaiya.edu  | AxonBlAzE  |https://github.com/AxonBlAzE|
+| 2.     | Ramavtar Yadav| ramavtar.y@somaiya.edu | ramavtarofficial   |https://github.com/ramavtarofficial|
+| 3.     | Aniruddha Dhawad| aniruddha.dhawad@somaiya.edu| Aniruddha124    |https://github.com/Aniruddha124|
