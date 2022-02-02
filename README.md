@@ -76,6 +76,14 @@ The user can continue to translate the text as many times as they want.
 <img src="./assets/Textract_Images/Screenshot_20211203-104532.jpg" width="200" height="400">
 <img src="./assets/Textract_Images/Screenshot_20211203-104538.jpg" width="200" height="400">
 
+### User Feedback
+The user can also submit their experience using a feedback form and also view the feedack provided by other users.
+</br>
+</br>
+<img src="./assets/Textract_Images/Screenshot_20220202-230000.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/Screenshot_20220202-230027.jpg" width="200" height="400">
+
+
 ## Stack
 
 - Dart
