@@ -62,26 +62,27 @@ The user can also Save the Extracted Text in a .txt file by clicking on the Save
 You can also use the Translate button to switch from one language to another. The user can choose from the list of available languages.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-104311.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/language_option.jpg" width="200" height="400">
 
 After selecting a language the text will be translated.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-104427.jpg" width="200" height="400">
-<img src="./assets/Textract_Images/Screenshot_20211203-104449.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/translating_animation_1.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/translated_text_1.jpg" width="200" height="400">
 
 The user can continue to translate the text as many times as they want.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-104532.jpg" width="200" height="400">
-<img src="./assets/Textract_Images/Screenshot_20211203-104538.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/translating_animation_2.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/translated_text_2.jpg" width="200" height="400">
 
 ### User Feedback
 The user can also submit their experience using a feedback form and also view the feedack provided by other users.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20220202-230000.jpg" width="200" height="400">
-<img src="./assets/Textract_Images/Screenshot_20220202-230027.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/feedback_option.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/feedback_form.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/feedback_reviews.jpg" width="200" height="400">
 
 
 ## Stack
