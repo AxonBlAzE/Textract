@@ -22,41 +22,41 @@ Have you ever needed to extract text from a picture but couldn't and ended up ha
 After starting the app the user will be directed to the home screen where they can see the description and 3 easy steps to use our app.They will be explained below.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-103229.jpg" width="200" height="400">
-<img src="./assets/Textract_Images/Screenshot_20211203-103741__01.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/initial_loading.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/initial_page_1.jpg" width="200" height="400">
 
 After reading them the user can click on get started button.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-104053.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/initial_page_2.jpg" width="200" height="400">
 
 ### Step 1
 Simply choose an image from the gallery or take a new one.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-104112.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/image_option.jpg" width="200" height="400">
 
 The Selected Image will be displayed on the Preview Screen.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-104146.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/image_preview.jpg" width="200" height="400">
 
 ### Step 2 
 By pressing the convert button, you may now transform the image to text.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-104202__01.jpg" width="200" height="400">
-<img src="./assets/Textract_Images/Screenshot_20211203-104212.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/convert_animation.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/convert_text_preview.jpg" width="200" height="400">
 
 By Clicking on the Copy to Clipboard Button the Extracted Text will be copied.The user is now free to paste this text where they want.
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-104234.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/clipboard_text.jpg" width="200" height="400">
 
 The user can also Save the Extracted Text in a .txt file by clicking on the Save As Text button 
 </br>
 </br>
-<img src="./assets/Textract_Images/Screenshot_20211203-104251.jpg" width="200" height="400">
+<img src="./assets/Textract_Images/text_file_save.jpg" width="200" height="400">
 
 ### Step 3 
 You can also use the Translate button to switch from one language to another. The user can choose from the list of available languages.
